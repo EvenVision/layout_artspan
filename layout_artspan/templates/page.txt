@@ -1,0 +1,70 @@
+<div id="page" class="container">
+  <header  role="banner">
+    <?php if ($logo): ?>
+      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="header__logo" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" class="header__logo-image" /></a>
+    <?php endif; ?>
+
+    <?php //if ($main_menu): ?>
+      <?php // if small screen then only show menu button and menu when clicked ?>
+      <nav id="main-menu" class="navigation small-button">
+          <?php //print render($page['main_menu']); ?>
+          <a class="to-nav" href="#primary_nav">Menu</a>
+      </nav> <!-- /#main-menu -->
+    <?php //endif; ?>
+      
+    <div id="header-image" style="background-image: url(http://www.beaversconsulting.com/sites/default/files/header-images/header-home-320.jpg) no-repeat">
+        <h2>AG 3 - HEADER-IMAGE</h2>
+    </div>
+
+    <nav id="site-slogan" >
+        <h2>AG 4 - SITE-SLOGAN</h2>
+    </nav>
+
+  </header>
+
+  <div id="main">
+    <section id="featured-event">
+        <h2>FEATURED-EVENT</h2>
+    </section>
+    <section id="event-row">
+        <h2>EVENT-ROW</h2>
+    </section>
+    <section id="featured-artist">
+        <h2>FEATURED-ARTIST</h2>
+    </section>
+    <section id="featured-artwork">
+        <h2>FEATURED-ARTWORK</h2>
+    </section>
+    <section id="members">
+        <h2>MEMBERS</h2>
+    </section>    
+  </div>
+  
+  <?php //if ($main_menu): ?>
+    <?php // if small screen then show menu here ?>
+    <nav id="main-menu" class="navigation small-menu">
+        <?php print render($page['main_menu']); ?>
+    </nav> <!-- /#main-menu -->
+  <?php //endif; ?>
+  
+  <footer id="footer">
+    <section id="social-media">
+      <h2>SOCIAL-MEDIA</h2>
+    </section>
+    <nav id="footer-navigation" class="navigation">
+      <h2>FOOTER-NAVIGATION</h2>
+    </nav>
+    <section id="footer-bar" class="legalese">
+      <h2>FOOTER-BAR</h2>
+    </section>
+    
+    <?php //if ($main_menu): ?>
+      <nav id="footer-bar" class="footer-panels">
+          <?php print render($page['footer']); ?>
+      </nav>
+    <?php //endif; ?>
+  </footer>
+
+  <?php print render($page['bottom']); ?>  
+</div>
+<!-- /container -->

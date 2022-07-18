@@ -1,0 +1,406 @@
+/**
+  * @file
+  * Media query for large-min - these are options that will persist in large sizes
+  * Large-min marks the change from handheld devices to laptops/desktops
+  * Menu is moved to the top and footer is added; small device menus are 
+  * no longer displayed
+  * We use min so that we do not have to repeat this stuff in large breakpoint
+  * files
+  */
+
+@include breakpoint($large-min) {
+
+/**
+  * NICE MENUS
+  ************
+  */
+  /******************************
+   Global CSS for ALL menu types
+  ******************************/
+  
+  ul.nice-menu,
+  ul.nice-menu ul {
+   // list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul.nice-menu li {
+    float: left;
+  }
+
+  ul.nice-menu ul {
+    top: 1.8em;
+    left: -1px;
+    margin-right: 0;
+  }
+
+  
+
+  #block-nice-menus-1 {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    background: none;
+    
+    .block-title{
+      display: none;
+    }
+    
+    li {
+      display: inline;
+    }    
+      
+    li a {
+      float: left;
+      border: none;
+      padding: 0 10px;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      //border-radius: 2px;
+    }    
+  }  
+
+  /******************************
+   NICE HORIZONTAL (down) menus
+  ******************************/
+
+  ul.nice-menu-down {
+    float: left;
+    white-space: nowrap;
+  }
+
+  ul.nice-menu-down ul {
+    left: 0; /* LTR */
+  }
+
+  ul.nice-menu-down ul li {
+    clear: both;
+  }
+
+  ul.nice-menu-down li ul li ul {
+    left: 18em; // third tier should not cover up second tier titles
+    top: -1px;
+  }
+
+  ul.nice-menu-down .menuparent a {
+    padding-right: 15px; /* LTR */
+  }  
+
+/**
+  * GLOBAL MENUS
+  **************
+  */
+  .menu__item.is-leaf,
+  .menu__item.is-collapsed,
+  .menu__item.is-expanded {
+    list-style-type: none;
+    list-style-image: none;
+  }
+  .navigation ul {
+    list-style: none;
+    background: #ffffff;
+    padding: 5px 0;
+  }
+
+  .main-navigation,
+  #sidebar-nav {
+    li a {
+      padding: 0 1em;
+      text-decoration: none;
+      font-family: $montserrat-bold;    
+      text-transform: uppercase;
+      line-height: 2em;
+      height: 2em;    
+    }
+ 
+    li a:hover,
+    li a:focus {
+      color: #ffffff;
+      background: $link-color;
+    } 
+  }
+  
+/**
+  * HEADER
+  *********
+  */
+  
+  //
+  // Logo
+  //
+  /* Wrapping link for logo. */
+  .header__logo {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Logo image. */
+  .header__logo-image {
+    /* Suppress the space beneath the baseline */
+    vertical-align: bottom;
+  }  
+
+/**
+  * MAIN MENU
+  ***********
+  */
+  // remove the mobile touch button
+  a#to-main-menu {
+      display: none;
+  }
+  
+  // display the main-menu
+  #main-menu-wrapper {
+    display: block;
+  }
+  
+  #main-menu {
+    ul.nice-menu a {
+      color: $main-menu-color;
+    }
+    
+    ul.nice-menu a:active,
+    ul.nice-menu a:hover {
+      color: $main-menu-color-active;
+    }
+    
+    ul.nice-menu ul li {
+      background: $link-color;
+      //width: 19em;
+    }
+    
+    ul.nice-menu ul li a {
+      color: #ffffff;
+      width: 19em; // this causes the scrollbar issue
+    } 
+  }
+ 
+// ARTIST SEARCH
+
+
+
+/**
+  * ASIDE
+  *******
+  */
+
+  
+  #sidebar-first {
+    //border: blue 1px solid;
+   // background: url("../images/artspan-aside-splash.jpg") no-repeat fixed center; 
+   //background-size: 350px 600px;
+  }
+  #u-r-here-nav {
+    margin: 0 auto;
+    width: 80%;
+    
+    h1#page-title {
+      margin-left: 0.5em;
+    }     
+  }   
+ 
+  #sidebar-nav {
+    color: $link-color;
+    // display the sidebar-nav - this was not displayed for lt medium
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    
+    h2.block-title {
+      display: none;
+    }
+    
+
+    
+    li {
+      border-bottom: 1px solid $lightgray;      
+    }
+    
+    li:last-child {
+      border-bottom: none;
+    }
+    
+    // set the 3rd tier menus
+    ul.menu ul li {
+      margin-left: 1.4em;
+    }     
+  }  
+
+
+/**
+  * HOME PAGE
+  ***********
+  */
+.homepage #block-views-events-featured-event {
+  .featured-event-body p {
+    text-align: left;
+  }
+  .mainfeaturedevent .featured-event-date span {
+      white-space: nowrap;
+  }
+}
+  
+/** SOCIAL MEDIA    
+  **************
+  */
+  //.region-social-media-footer {
+ //   max-width: 100% !important;
+ // }
+ 
+  #social-media {
+    overflow: hidden;
+    
+    .block {
+      margin-bottom: 0;
+    }
+    
+    #block-block-12, 
+    #block-instagram-block-instagram-block, 
+    #block-twitter-block-1 {
+      padding: 0;
+    }
+    
+    h2.block-title {
+      text-align: left;
+    }
+    
+    #block-block-12 {        
+      position: relative;
+      min-height: 25em;
+      // 1- adding padding and margin to each of the three div's makes 
+      // them all the same height
+     // padding-bottom: 100%; // all divs same height
+     // margin-bottom: -100%;  // all divs same height      
+      
+      #newsletter-signup-block {
+        position: absolute;
+        top: 3em;
+        left: 3em;
+      }
+
+      h2.block-title {
+        color: #ffffff;
+        margin: 0 0 0.6em;
+        word-wrap: normal;
+        width: 50%;         
+      }
+      
+      .email-label {
+        color: #ffffff;
+        line-height: 2.1em;
+        font-family: $raleway-bold;
+        letter-spacing: .075em;
+        text-align: left;
+      }
+      
+      input {
+        border: none;
+      }
+      
+    }
+    
+    // Instagram
+    #block-instagram-block-instagram-block {
+      //background-color: $lightgray;
+      margin: 0;
+      //padding-bottom: 100%; // all divs same height
+      //margin-bottom: -100%; // all divs same height
+      
+      h2.block-title {
+        margin: 2em 0 0.5em 1.2em;
+        word-wrap: normal;
+        width: 50%;        
+      }
+      
+      input.submit-button {
+        margin-top: 1em;
+      }
+    }
+    
+    // Twitter
+    #block-twitter-block-1 {
+      //background-color: $lightgray;
+      margin-top: 1.4em;
+      //padding-bottom: 100%; // all divs same height
+      //margin-bottom: -100%; // all divs same height
+
+      h2.block-title {
+        margin: 0.8em 0 0 0.25em;
+        word-wrap: normal;
+        width: 50%;
+      }
+    }     
+  } 
+
+/**
+  * FOOTER MENU
+  *************
+  */
+  #footer-section {
+    #footer-logo {
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
+    }
+  } 
+  
+  #footer-menu #navigation-footer {
+    // display the footer menu for larger devices
+    #block-menu-menu-menu-footer-menu li {
+      display: inline;
+    }
+  
+    // hide the main menu at the bottom for larger devices
+    #block-system-main-menu {
+      display: none;
+    }
+  }    
+  
+  #block-menu-menu-menu-footer-menu {
+    padding-top: 2.5em;
+    
+    .block-title{
+      display: none;
+    }
+
+    li a {
+      padding: 0.4em;
+      color: $main-menu-color;
+    }  
+  }
+  
+  #footer-menu {
+    #badge-nav {
+      margin-top: 2.2em;
+    }
+  }
+  
+/**
+  * LEGALESE
+  **********
+  */ 
+#footer-bar {
+  a {
+    margin: 0 0.5em 0.4em;
+  }
+  
+  #block-menu-menu-legalese-menu {
+
+    ul {
+      list-style: outside none none;
+    }
+    
+    li {
+      display: inline; 
+    } 
+  }
+}
+
+/**
+  * TO TOP
+  ********
+  */   
+  #footer-section #to-page-top {
+    display: none;
+  }  
+} // large-min

@@ -1,0 +1,15 @@
+/**
+ * @file
+ * _artspan-nicemenues.scss overrides values in nicemenus.css
+ * location: /data/clients/artspan-theme.openflows.com/sites/all/modules/contrib/nice_menus/css/nice_menus_default.css
+ */
+ /*
+  This is the default layout template for nice menus, and will provide
+  a starting point for the look of your menus. To customize, it's
+  recommended to create a custom CSS file using this file as a template,
+  then configure the module to use your custom CSS file
+  (this is done in the global settings tab of the theme administration.)
+
+  See README.txt and the handbook page (http://drupal.org/node/185543)
+  for more information on using the CSS.
+*/

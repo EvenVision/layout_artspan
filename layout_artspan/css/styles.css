@@ -1,0 +1,4640 @@
+@charset "UTF-8";
+/** 
+ * @file
+ * Styles are organized using the SMACSS technique. @see http://smacss.com/book/
+ *
+ * When you turn on CSS aggregation at admin/config/development/performance, all
+ * of these @include files will be combined into a single file.
+ */
+/* Import Sass mixins, variables, Compass modules, etc. */
+/*
+// First, let's create some font stacks.
+$times-new-roman: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
+$times:           Times, "Times New Roman", Georgia, "DejaVu Serif", serif;
+$georgia:         Georgia, "Times New Roman", "DejaVu Serif", serif;
+
+$verdana:         Verdana, Tahoma, "DejaVu Sans", sans-serif;
+$tahoma:          Tahoma, Verdana, "DejaVu Sans", sans-serif;
+$helvetica:       Helvetica, Arial, "Nimbus Sans L", sans-serif;
+arial:           Arial, Helvetica, "Nimbus Sans L", sans-serif;
+---*/
+/* Component (SMACSS module) rules */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+/*html {
+  font-family: sans-serif; // 1
+  -ms-text-size-adjust: 100%; // 2
+  -webkit-text-size-adjust: 100%; // 2 
+}*/
+/**
+ * Remove default margin.
+ */
+/* line 19, ../sass/vendors/_normalize.scss */
+body {
+  margin: 0;
+}
+
+
+/* Temp SFOS 2022 prep */
+
+/* 
+.drupal-system-elements .messages--error {
+  display: none;
+}
+
+.role-sfos-test-user .drupal-system-elements .messages--error {
+  display: block;
+}
+
+*/
+/* Perm SFOS 2022 */
+
+.paypal_button_info-section {
+  display: none;
+}
+
+._qf_Register_upload_express-section  {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+/* various quick additions for SFOS 2022 Registration */
+
+/* hide weekend selection, only to be displayed after a 1 or 2 weekend registration tier is chosen. */
+#editrow-custom_153 {
+  display: none;
+}
+
+/* quick and dirty override of !important rule busting these image sizes and resizing */
+.crm-section #sos-2022-color-map img {
+  width: 37% !important;
+  float: left;
+}
+.crm-section #sos-2022-outline-map img {
+  width: 63% !important;
+  float: left;
+}
+
+/* clearing above float */
+#editrow-custom_102 {
+  clear: both;
+}
+
+/* alignment of weekend selection checkboxes and labels */
+#editrow-custom_153 .content input {
+  display: block;
+}
+#editrow-custom_153 .content label {
+  position: relative;
+  top: -17px;
+  left: 15px;
+}
+
+/* Removal of weekend selection from public profile  */
+.page-civicrm-contribute #sos-2022-maps {
+ /* display: none !important; */
+} 
+
+.page-civicrm-contribute #editrow-custom_153 {
+/*  display: none !important; */
+}
+
+
+
+
+
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+/* line 33, ../sass/vendors/_normalize.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/* line 54, ../sass/vendors/_normalize.scss */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 67, ../sass/vendors/_normalize.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+/* line 77, ../sass/vendors/_normalize.scss */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+/* line 89, ../sass/vendors/_normalize.scss */
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+/* line 98, ../sass/vendors/_normalize.scss */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/* line 110, ../sass/vendors/_normalize.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/* line 118, ../sass/vendors/_normalize.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/* line 127, ../sass/vendors/_normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+/* line 136, ../sass/vendors/_normalize.scss */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 145, ../sass/vendors/_normalize.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 154, ../sass/vendors/_normalize.scss */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 162, ../sass/vendors/_normalize.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 170, ../sass/vendors/_normalize.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 174, ../sass/vendors/_normalize.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+/* line 185, ../sass/vendors/_normalize.scss */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+/* line 193, ../sass/vendors/_normalize.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/* line 204, ../sass/vendors/_normalize.scss */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 212, ../sass/vendors/_normalize.scss */
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+/* line 221, ../sass/vendors/_normalize.scss */
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* line 229, ../sass/vendors/_normalize.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+/* line 252, ../sass/vendors/_normalize.scss */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+/* line 266, ../sass/vendors/_normalize.scss */
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+/* line 277, ../sass/vendors/_normalize.scss */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* line 290, ../sass/vendors/_normalize.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/* line 302, ../sass/vendors/_normalize.scss */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 311, ../sass/vendors/_normalize.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 322, ../sass/vendors/_normalize.scss */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/* line 334, ../sass/vendors/_normalize.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/* line 346, ../sass/vendors/_normalize.scss */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
+ */
+/* line 356, ../sass/vendors/_normalize.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  box-sizing: content-box;
+  /* 2 */
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/* line 367, ../sass/vendors/_normalize.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+/* line 376, ../sass/vendors/_normalize.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/* line 387, ../sass/vendors/_normalize.scss */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/* line 396, ../sass/vendors/_normalize.scss */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* line 405, ../sass/vendors/_normalize.scss */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 416, ../sass/vendors/_normalize.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 421, ../sass/vendors/_normalize.scss */
+td,
+th {
+  padding: 0;
+}
+
+/**
+ * @file
+ * SMACSS Modules
+ *
+ * Adds modular sets of styles.
+ *
+ * Additional useful selectors can be found in Zen's online documentation.
+ * https://drupal.org/node/1707736
+ */
+/**
+ * Wireframes.
+ */
+/* line 15, ../sass/components/_misc.scss */
+.with-wireframes #header,
+.with-wireframes #main,
+.with-wireframes #content,
+.with-wireframes #navigation,
+.with-wireframes .region-sidebar-first,
+.with-wireframes .region-sidebar-second,
+.with-wireframes #footer,
+.with-wireframes .region-bottom {
+  outline: 1px solid #ccc;
+}
+
+/**
+ * Accessibility features.
+ */
+/* element-invisible as defined by http://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
+/* line 33, ../sass/components/_misc.scss */
+.element-invisible,
+.element-focusable,
+#navigation .block-menu .block__title,
+#navigation .block-menu-block .block__title {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* Turns off the element-invisible effect. */
+/* line 39, ../sass/components/_misc.scss */
+.element-focusable:active, .element-focusable:focus {
+  position: static !important;
+  clip: auto;
+  height: auto;
+  width: auto;
+  overflow: auto;
+}
+
+/*
+ * The skip-link link will be completely hidden until a user tabs to the link.
+ */
+/* line 56, ../sass/components/_misc.scss */
+#skip-link {
+  margin: 0;
+}
+/* line 59, ../sass/components/_misc.scss */
+#skip-link a,
+#skip-link a:visited {
+  display: block;
+  width: 100%;
+  padding: 2px 0 3px 0;
+  text-align: center;
+  background-color: #666;
+  color: #fff;
+}
+
+/* The secondary menu (login, etc.) */
+/* line 71, ../sass/components/_misc.scss */
+.header__secondary-menu {
+  float: right;
+}
+
+/* Wrapper for any blocks placed in the header region. */
+/* line 76, ../sass/components/_misc.scss */
+.header__region {
+  /* Clear the logo. */
+  clear: both;
+}
+
+/**
+ * Navigation bar.
+ */
+/* line 84, ../sass/components/_misc.scss */
+#navigation {
+  /* Sometimes you want to prevent overlapping with main div. */
+  /* overflow: hidden; */
+  /* Main menu and secondary menu links and menu block links. */
+}
+/* line 88, ../sass/components/_misc.scss */
+#navigation .block {
+  margin-bottom: 0;
+}
+/* line 98, ../sass/components/_misc.scss */
+#navigation .links,
+#navigation .menu {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+/* line 104, ../sass/components/_misc.scss */
+#navigation .links li,
+#navigation .menu li {
+  /* A simple method to get navigation links to appear in one line. */
+  float: left;
+  padding: 0 10px 0 0;
+  list-style-type: none;
+  list-style-image: none;
+}
+
+/**
+ * Breadcrumb navigation.
+ */
+/* line 118, ../sass/components/_misc.scss */
+.breadcrumb ol {
+  margin: 0;
+  padding: 0;
+}
+/* line 122, ../sass/components/_misc.scss */
+.breadcrumb li {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Titles.
+ */
+/* line 133, ../sass/components/_misc.scss */
+.page__title,
+.node__title,
+.block__title,
+.comments__title,
+.comments__form-title,
+.comment__title {
+  /* Comment title. */
+  margin: 0;
+}
+
+/**
+ * Messages.
+ */
+/* line 145, ../sass/components/_misc.scss */
+.messages, .messages--status, .messages--warning, .messages--error {
+  margin: 1.5em 0;
+  padding: 10px 10px 10px 50px;
+  border: 1px solid #be7;
+}
+
+/* line 154, ../sass/components/_misc.scss */
+.messages--warning {
+  border-color: #ed5;
+}
+
+/* line 159, ../sass/components/_misc.scss */
+.messages--error {
+  border-color: #ed541d;
+}
+
+/* line 165, ../sass/components/_misc.scss */
+.messages__list {
+  margin: 0;
+}
+
+/* line 168, ../sass/components/_misc.scss */
+.messages__item {
+  list-style-image: none;
+}
+
+/* Core/module installation error messages. */
+/* line 173, ../sass/components/_misc.scss */
+.messages--error p.error {
+  color: #333;
+}
+
+/* System status report. */
+/* line 178, ../sass/components/_misc.scss */
+.ok,
+.messages--status {
+  background-color: #f8fff0;
+  color: #234600;
+}
+
+/* line 183, ../sass/components/_misc.scss */
+.warning,
+.messages--warning {
+  background-color: #fffce5;
+  color: #840;
+}
+
+/* line 188, ../sass/components/_misc.scss */
+.error,
+.messages--error {
+  background-color: #fef5f1;
+  color: #8c2e0b;
+}
+
+/**
+ * Tabs.
+ */
+/* Basic positioning styles shared by primary and secondary tabs. */
+/* line 199, ../sass/components/_misc.scss */
+.tabs-primary, .tabs-secondary {
+  overflow: hidden;
+  *zoom: 1;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYmJiYmJiIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(100%, #bbbbbb), color-stop(100%, rgba(0, 0, 0, 0)));
+  background-image: -moz-linear-gradient(bottom, #bbbbbb 1px, rgba(0, 0, 0, 0) 1px);
+  background-image: -webkit-linear-gradient(bottom, #bbbbbb 1px, rgba(0, 0, 0, 0) 1px);
+  background-image: linear-gradient(to top, #bbbbbb 1px, rgba(0, 0, 0, 0) 1px);
+  /* IE 9 and earlier don't understand gradients. */
+  list-style: none;
+  border-bottom: 1px solid #bbb \0/ie;
+  margin: 1.5em 0;
+  padding: 0 2px;
+  white-space: nowrap;
+}
+
+/* line 209, ../sass/components/_misc.scss */
+.tabs-primary__tab, .tabs-primary__tab.is-active, .tabs-secondary__tab,
+.tabs-secondary__tab.is-active {
+  float: left;
+  margin: 0 3px;
+}
+
+/* line 213, ../sass/components/_misc.scss */
+a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active, a.tabs-secondary__tab-link, a.tabs-secondary__tab-link.is-active {
+  border: 1px solid #e9e9e9;
+  border-right: 0;
+  border-bottom: 0;
+  display: block;
+  line-height: 1.5em;
+  text-decoration: none;
+}
+
+/* Primary tabs. */
+/* line 226, ../sass/components/_misc.scss */
+.tabs-primary__tab, .tabs-primary__tab.is-active {
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  text-shadow: 1px 1px 0 #fff;
+  border: 1px solid #bbb;
+  border-bottom-color: transparent;
+  /* IE 9 and earlier don't understand gradients. */
+  border-bottom: 0 \0/ie;
+}
+
+/* line 235, ../sass/components/_misc.scss */
+.tabs-primary__tab.is-active {
+  border-bottom-color: #fff;
+}
+
+/* line 241, ../sass/components/_misc.scss */
+a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active {
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  -moz-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  color: #333;
+  background-color: #dedede;
+  letter-spacing: 1px;
+  padding: 0 1em;
+  text-align: center;
+}
+
+/* line 251, ../sass/components/_misc.scss */
+a.tabs-primary__tab-link:hover, a.tabs-primary__tab-link:focus {
+  background-color: #e9e9e9;
+  border-color: #f2f2f2;
+}
+
+/* line 255, ../sass/components/_misc.scss */
+a.tabs-primary__tab-link:active, a.tabs-primary__tab-link.is-active {
+  background-color: transparent;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFE9E9E9', endColorstr='#00E9E9E9');
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2U5ZTllOSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2U5ZTllOSIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e9e9e9), color-stop(100%, rgba(233, 233, 233, 0)));
+  background-image: -moz-linear-gradient(#e9e9e9, rgba(233, 233, 233, 0));
+  background-image: -webkit-linear-gradient(#e9e9e9, rgba(233, 233, 233, 0));
+  background-image: linear-gradient(#e9e9e9, rgba(233, 233, 233, 0));
+  border-color: #fff;
+}
+
+/* Secondary tabs. */
+/* line 279, ../sass/components/_misc.scss */
+.tabs-secondary {
+  font-size: .9em;
+  /* Collapse bottom margin of ul.primary. */
+  margin-top: -1.5em;
+}
+
+/* line 285, ../sass/components/_misc.scss */
+.tabs-secondary__tab,
+.tabs-secondary__tab.is-active {
+  margin: 0.75em 3px;
+}
+
+/* line 292, ../sass/components/_misc.scss */
+a.tabs-secondary__tab-link, a.tabs-secondary__tab-link.is-active {
+  -moz-border-radius: 0.75em;
+  -webkit-border-radius: 0.75em;
+  border-radius: 0.75em;
+  -moz-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  text-shadow: 1px 1px 0 #fff;
+  background-color: #f2f2f2;
+  color: #666;
+  padding: 0 .5em;
+}
+
+/* line 301, ../sass/components/_misc.scss */
+a.tabs-secondary__tab-link:hover, a.tabs-secondary__tab-link:focus {
+  background-color: #dedede;
+  border-color: #999;
+  color: #333;
+}
+
+/* line 306, ../sass/components/_misc.scss */
+a.tabs-secondary__tab-link:active, a.tabs-secondary__tab-link.is-active {
+  text-shadow: 1px 1px 0 #333;
+  background-color: #666;
+  border-color: #000;
+  color: #fff;
+}
+
+/**
+ * Inline styles.
+ */
+/* List of links generated by theme_links(). */
+/* line 334, ../sass/components/_misc.scss */
+.inline {
+  display: inline;
+  padding: 0;
+}
+/* line 338, ../sass/components/_misc.scss */
+.inline li {
+  display: inline;
+  list-style-type: none;
+  padding: 0 1em 0 0;
+}
+
+/* The inline field label used by the Fences module. */
+/* line 346, ../sass/components/_misc.scss */
+span.field-label {
+  padding: 0 1em 0 0;
+}
+
+/**
+ * "More" links.
+ */
+/* line 353, ../sass/components/_misc.scss */
+.more-link {
+  text-align: right;
+}
+
+/* line 356, ../sass/components/_misc.scss */
+.more-help-link {
+  text-align: right;
+}
+
+/* line 359, ../sass/components/_misc.scss */
+.more-help-link a {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA7UlEQVR42qWTPQqDQBCFcwSPkCNITpAj5AjeIm1uYpkyR7Cy2Mot7OwsBAsRwUKwmOwLGRle3EIy8PyBfZ/z3J2TiPylz8VWWZZpUB40BonRKyizaxkA88MYYiqCEgv4MTvnZJom0VqWRbz3FlJZgLYtqmEY1Lg9r+sKsIXcLSC3AC019H0vqLquLeC5AfiHYSGkcdAJimKIBQiJ4+CO92OAtm0FNc8zOjkMwE5Q63FAtbeg6zpAYvG8BWR7i5qmQYwY4MIHqYhE2DOPQWcGJBQF2XU72ZzyUeZ5GCNt5/hybJgYdAXsq5sOEE/jG6dC5IOqCXTmAAAAAElFTkSuQmCC');
+  background-position: 0 50%;
+  background-repeat: no-repeat;
+  padding: 1px 0 1px 20px;
+}
+
+/**
+ * Pager.
+ */
+/* A list of page numbers when more than 1 page of content is available. */
+/* line 371, ../sass/components/_misc.scss */
+.pager {
+  clear: both;
+  padding: 0;
+  text-align: center;
+}
+
+/* line 376, ../sass/components/_misc.scss */
+.pager-item,
+.pager-first,
+.pager-previous,
+.pager-next,
+.pager-last,
+.pager-ellipsis, .pager-current {
+  display: inline;
+  padding: 0 0.5em;
+  list-style-type: none;
+  background-image: none;
+}
+
+/* line 383, ../sass/components/_misc.scss */
+.pager-item,
+.pager-first,
+.pager-previous,
+.pager-next,
+.pager-last,
+.pager-ellipsis {
+  /* A concatenation of several list items using an ellipsis. */
+}
+
+/* The current page's list item. */
+/* line 393, ../sass/components/_misc.scss */
+.pager-current {
+  font-weight: bold;
+}
+
+/**
+ * Blocks.
+ */
+/* Block wrapper. */
+/* line 403, ../sass/components/_misc.scss */
+.block {
+  margin-bottom: 1.5em;
+}
+
+/**
+ * Menus.
+ */
+/* line 410, ../sass/components/_misc.scss */
+.menu__item.is-leaf {
+  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHBAMAAAA2fErgAAAAD1BMVEX///+/v7+Li4sAAADAwMBFvsw8AAAAAXRSTlMAQObYZgAAAB1JREFUCFtjYAADYwMGBmYVZSDhKAwkFJWhYiAAAB2+Aa/9ugeaAAAAAElFTkSuQmCC');
+  list-style-type: square;
+}
+
+/* line 414, ../sass/components/_misc.scss */
+.menu__item.is-expanded {
+  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABJJREFUeJxj+MdQw2DBIMAABgAUsAHD3c3BpwAAAABJRU5ErkJggg==');
+  list-style-type: circle;
+}
+
+/* line 418, ../sass/components/_misc.scss */
+.menu__item.is-collapsed {
+  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABFJREFUCB1jVmCGQClmEWYOAAZ8AMy3HPLXAAAAAElFTkSuQmCC');
+  list-style-type: disc;
+}
+
+/* The active item in a Drupal menu. */
+/* line 424, ../sass/components/_misc.scss */
+.menu a.active {
+  color: #000;
+}
+
+/**
+ * Marker.
+ */
+/* The "new" or "updated" marker. */
+/* line 433, ../sass/components/_misc.scss */
+.new,
+.update {
+  color: #c00;
+  /* Remove background highlighting from <mark> in normalize. */
+  background-color: transparent;
+}
+
+/**
+ * Unpublished note.
+ */
+/* The word "Unpublished" displayed underneath the content. */
+/* line 445, ../sass/components/_misc.scss */
+.unpublished {
+  height: 0;
+  overflow: visible;
+  /* Remove background highlighting from <mark> in normalize. */
+  background-color: transparent;
+  color: #d8d8d8;
+  font-size: 75px;
+  line-height: 1;
+  font-family: Impact, "Arial Narrow", Helvetica, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  /* A very nice CSS3 property. */
+  word-wrap: break-word;
+}
+
+/**
+ * Comments.
+ */
+/* Wrapper for the list of comments and its title. */
+/* line 467, ../sass/components/_misc.scss */
+.comments {
+  margin: 1.5em 0;
+}
+
+/* Preview of the comment before submitting new or updated comment. */
+/* line 472, ../sass/components/_misc.scss */
+.comment-preview {
+  /* Drupal core will use a #ffffea background. See #1110842. */
+  background-color: #ffffea;
+}
+
+/* Wrapper for a single comment. */
+/* line 478, ../sass/components/_misc.scss */
+.comment {
+  /* Comment's permalink wrapper. */
+}
+/* line 481, ../sass/components/_misc.scss */
+.comment .permalink {
+  text-transform: uppercase;
+  font-size: 75%;
+}
+
+/* Nested comments are indented. */
+/* line 488, ../sass/components/_misc.scss */
+.indented {
+  /* Drupal core uses a 25px left margin. */
+  margin-left: 30px;
+}
+
+/**
+ * Forms.
+ */
+/* Wrapper for a form element (or group of form elements) and its label. */
+/* line 498, ../sass/components/_misc.scss */
+.form-item {
+  margin: 1.5em 0;
+  /* Pack groups of checkboxes and radio buttons closer together. */
+  /* Form items in a table. */
+  /* Highlight the form elements that caused a form submission error. */
+  /* The descriptive help text (separate from the label). */
+}
+/* line 502, ../sass/components/_misc.scss */
+.form-checkboxes .form-item, .form-radios .form-item {
+  /* Drupal core uses "0.4em 0". */
+  margin: 0;
+}
+/* line 509, ../sass/components/_misc.scss */
+tr.odd .form-item, tr.even .form-item {
+  margin: 0;
+}
+/* line 515, ../sass/components/_misc.scss */
+.form-item input.error,
+.form-item textarea.error,
+.form-item select.error {
+  border: 1px solid #c00;
+}
+/* line 522, ../sass/components/_misc.scss */
+.form-item .description {
+  font-size: 0.85em;
+}
+
+/* line 529, ../sass/components/_misc.scss */
+.form-type-radio .description,
+.form-type-checkbox .description {
+  margin-left: 2.4em;
+}
+
+/* The part of the label that indicates a required field. */
+/* line 535, ../sass/components/_misc.scss */
+.form-required {
+  color: #c00;
+}
+
+/* Labels for radios and checkboxes. */
+/* line 540, ../sass/components/_misc.scss */
+label.option {
+  display: inline;
+  font-weight: normal;
+}
+
+/* Buttons used by contrib modules like Media. */
+/* line 546, ../sass/components/_misc.scss */
+a.button {
+  -moz-appearance: button;
+  -webkit-appearance: button;
+}
+
+/* Password confirmation. */
+/* line 551, ../sass/components/_misc.scss */
+.password-parent,
+.confirm-parent {
+  margin: 0;
+}
+
+/* Drupal's default login form block. */
+/* line 557, ../sass/components/_misc.scss */
+#user-login-form {
+  text-align: left;
+}
+
+/**
+ * OpenID
+ *
+ * The default styling for the OpenID login link seems to assume Garland's
+ * styling of list items.
+ */
+/* OpenID creates a new ul above the login form's links. */
+/* line 569, ../sass/components/_misc.scss */
+.openid-links {
+  /* Position OpenID's ul next to the rest of the links. */
+  margin-bottom: 0;
+}
+
+/* The "Log in using OpenID" and "Cancel OpenID login" links. */
+/* line 575, ../sass/components/_misc.scss */
+.openid-link,
+.user-link {
+  margin-top: 1.5em;
+}
+
+/* line 579, ../sass/components/_misc.scss */
+html.js #user-login-form li.openid-link,
+#user-login-form li.openid-link {
+  /* Un-do some of the padding on the ul list. */
+  margin-left: -20px;
+}
+
+/* line 584, ../sass/components/_misc.scss */
+#user-login ul {
+  margin: 1.5em 0;
+}
+
+/**
+ * Drupal admin tables.
+ */
+/* line 592, ../sass/components/_misc.scss */
+form th {
+  text-align: left;
+  padding-right: 1em;
+  border-bottom: 3px solid #ccc;
+}
+/* line 597, ../sass/components/_misc.scss */
+form tbody {
+  border-top: 1px solid #ccc;
+}
+/* line 600, ../sass/components/_misc.scss */
+form table ul {
+  margin: 0;
+}
+
+/* line 604, ../sass/components/_misc.scss */
+tr.even,
+tr.odd {
+  background-color: #eee;
+  border-bottom: 1px solid #ccc;
+  padding: 0.1em 0.6em;
+}
+
+/* line 610, ../sass/components/_misc.scss */
+tr.even {
+  background-color: #fff;
+}
+
+/* Markup generated by theme_tablesort_indicator(). */
+/* line 616, ../sass/components/_misc.scss */
+td.active {
+  background-color: #ddd;
+}
+
+/* Center checkboxes inside table cell. */
+/* line 621, ../sass/components/_misc.scss */
+td.checkbox,
+th.checkbox {
+  text-align: center;
+}
+
+/* Drupal core wrongly puts this in system.menus.css. Since we override that, add it back. */
+/* line 627, ../sass/components/_misc.scss */
+td.menu-disabled {
+  background: #ccc;
+}
+
+/**
+ * Autocomplete.
+ *
+ * @see autocomplete.js
+ */
+/* Suggestion list. */
+/* line 638, ../sass/components/_misc.scss */
+#autocomplete .selected {
+  background: #0072b9;
+  color: #fff;
+}
+
+/**
+ * Collapsible fieldsets.
+ *
+ * @see collapse.js
+ */
+/* line 649, ../sass/components/_misc.scss */
+html.js .collapsible .fieldset-legend {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABJJREFUeJxj+MdQw2DBIMAABgAUsAHD3c3BpwAAAABJRU5ErkJggg==');
+  background-position: 5px 65%;
+  background-repeat: no-repeat;
+  padding-left: 15px;
+}
+/* line 655, ../sass/components/_misc.scss */
+html.js .collapsed .fieldset-legend {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABFJREFUCB1jVmCGQClmEWYOAAZ8AMy3HPLXAAAAAElFTkSuQmCC');
+  background-position: 5px 50%;
+}
+/* line 659, ../sass/components/_misc.scss */
+.fieldset-legend .summary {
+  color: #999;
+  font-size: 0.9em;
+  margin-left: 0.5em;
+}
+
+/**
+ * TableDrag behavior.
+ *
+ * @see tabledrag.js
+ */
+/* line 671, ../sass/components/_misc.scss */
+tr.drag {
+  background-color: #fffff0;
+}
+
+/* line 674, ../sass/components/_misc.scss */
+tr.drag-previous {
+  background-color: #ffd;
+}
+
+/* line 677, ../sass/components/_misc.scss */
+.tabledrag-toggle-weight {
+  font-size: 0.9em;
+}
+
+/**
+ * TableSelect behavior.
+ *
+ * @see tableselect.js
+ */
+/* line 686, ../sass/components/_misc.scss */
+tr.selected td {
+  background: #ffc;
+}
+
+/**
+ * Progress bar.
+ *
+ * @see progress.js
+ */
+/* line 695, ../sass/components/_misc.scss */
+.progress {
+  font-weight: bold;
+}
+/* line 698, ../sass/components/_misc.scss */
+.progress .bar {
+  background: #ccc;
+  border-color: #666;
+  margin: 0 0.2em;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 704, ../sass/components/_misc.scss */
+.progress .filled {
+  background-color: #0072b9;
+  background-image: url('../images/progress.gif?1433891484');
+}
+
+/* HTML element (SMACSS base) rules */
+/**
+  * @file
+  * Houses all the basic structural typographic styles
+  * A lot of what's found within it is obvious stuff (heading sizes, for 
+  * example) but it also contains less obvious things
+  * http://webdesign.tutsplus.com/articles/a-web-designers-typographic-boilerplate--webdesign-15234
+  */
+/** 
+  * Base Font Sizes
+  * Sizes need to be here because calculations depend on them
+  * The font size set on the root html element.
+  */
+/**
+ * Typography
+ */
+@font-face {
+  font-family: "MontserratRegular";
+  src: url("../fonts/montserrat/montserrat-regular-webfont.eot");
+  src: url("../fonts/montserrat/montserrat-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat/montserrat-regular-webfont.woff") format("woff"), url("../fonts/montserrat/montserrat-regular-webfont.ttf") format("truetype"), url("../fonts/montserrat/montserrat-regular-webfont.svg#MontserratRegular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: "MontserratBold";
+  src: url("../fonts/montserrat/montserrat-bold-webfont.eot");
+  src: url("../fonts/montserrat/montserrat-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat/montserrat-bold-webfont.woff") format("woff"), url("../fonts/montserrat/montserrat-bold-webfont.ttf") format("truetype"), url("../fonts/montserrat/montserrat-bold-webfont.svg#MontserratBold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: "RalewayRegular";
+  src: url("../fonts/raleway/raleway-regular-webfont.eot");
+  src: url("../fonts/raleway/raleway-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway/raleway-regular-webfont.woff") format("woff"), url("../fonts/raleway/raleway-regular-webfont.ttf") format("truetype"), url("../fonts/raleway/raleway-regular-webfont.svg#RalewayRegular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: "RalewayBlack";
+  src: url("../fonts/raleway/raleway-black-webfont.eot");
+  src: url("../fonts/raleway/raleway-black-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway/raleway-black-webfont.woff") format("woff"), url("../fonts/raleway/raleway-black-webfont.ttf") format("truetype"), url("../fonts/raleway/raleway-black-webfont.svg#RalewayBlack") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: "RalewayBold";
+  src: url("../fonts/raleway/raleway-bold-webfont.eot");
+  src: url("../fonts/raleway/raleway-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway/raleway-bold-webfont.woff") format("woff"), url("../fonts/raleway/raleway-bold-webfont.ttf") format("truetype"), url("../fonts/raleway/raleway-bold-webfont.svg#RalewayBold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: "RalewaySemiBold";
+  src: url("../fonts/raleway/raleway-semibold-webfont.eot");
+  src: url("../fonts/raleway/raleway-semibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway/raleway-semibold-webfont.woff") format("woff"), url("../fonts/raleway/raleway-semibold-webfont.ttf") format("truetype"), url("../fonts/raleway/raleway-semibold-webfont.svg#RalewaySemiBold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: "RalewayLightItalic";
+  src: url("../fonts/raleway/raleway-lightitalic-webfont.eot");
+  src: url("../fonts/raleway/raleway-lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway/raleway-lightitalic-webfont.woff") format("woff"), url("../fonts/raleway/raleway-lightitalic-webfont.ttf") format("truetype"), url("../fonts/raleway/raleway-lightitalic-webfont.svg#RalewayLightItalic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+/*--------------*
+ * $HEADINGS    *
+ * ------------*/
+/* line 73, ../sass/base/_typography.scss */
+h1 {
+  color: #172f50;
+  font-family: "MontserratRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  font-size: 22.1px;
+  font-variant: caps;
+  line-height: 30.94px;
+  text-align: left;
+  text-transform: uppercase;
+  margin: 0 0 .4em;
+}
+
+/* line 84, ../sass/base/_typography.scss */
+h2 {
+  color: #172f50;
+  font-family: "RalewayRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  font-size: 23.4px;
+  font-variant: caps;
+  line-height: 32.76px;
+  text-align: left;
+  text-transform: uppercase;
+  margin: 0 0 .4em;
+}
+
+/* line 95, ../sass/base/_typography.scss */
+h3 {
+  color: #26aee8;
+  font-family: "MontserratBold", sans-serif;
+  font-size: 16.9px;
+  font-variant: caps;
+  line-height: 23.66px;
+  text-align: left;
+  text-transform: uppercase;
+  margin: 0 0 .4em;
+}
+
+/* line 106, ../sass/base/_typography.scss */
+h4 {
+  color: #172f50;
+  font-family: "MontserratBold", sans-serif;
+  font-size: 14.3px;
+  font-variant: caps;
+  line-height: 20.02px;
+  text-align: left;
+  text-transform: uppercase;
+  margin: 0 0 .4em;
+}
+
+/* line 117, ../sass/base/_typography.scss */
+h5 {
+  color: #26aee8;
+  font-family: "MontserratBold", sans-serif;
+  font-size: 13px;
+  font-variant: caps;
+  line-height: 18.2px;
+  text-align: left;
+  text-transform: uppercase;
+  margin: 0 0 .4em;
+}
+
+/* line 128, ../sass/base/_typography.scss */
+h6 {
+  color: #384345;
+  font-family: "MontserratRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  font-size: 11.7px;
+  font-variant: caps;
+  line-height: 16.38px;
+  text-align: left;
+  text-transform: uppercase;
+  margin: 0 0 .4em;
+}
+
+/* line 142, ../sass/base/_typography.scss */
+#footer-bar a {
+  color: #cfd9d6;
+  font-family: "MontserratRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  font-size: 13px;
+  font-variant: caps;
+  line-height: 18.2px;
+  text-transform: uppercase;
+  margin: 0 0 .4em;
+}
+
+/**
+  * @file
+  * Base rules are the defaults. They are almost exclusively single element 
+  * selectors but it could include attribute selectors, pseudo-class selectors, 
+  * child selectors or sibling selectors. Essentially, a base style says that 
+  * wherever this element is on the page, it should look like this. In SMACSS, 
+  * this file contains all the "base rules". http://smacss.com/book/type-base
+  *
+  * Keep in mind that normalize sets the default to normalize all browsers
+  */
+/*
+
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
+ *    `em` units.
+ */
+/* line 21, ../sass/base/_base.scss */
+html {
+  font-family: "RalewayRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  /* 1 */
+  font-size: 13px;
+  line-height: 1.4em;
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/* line 30, ../sass/base/_base.scss */
+body {
+  background-color: #ffffff;
+}
+
+/* line 34, ../sass/base/_base.scss */
+a {
+  color: #26aee8;
+  text-decoration: none;
+}
+
+/* line 39, ../sass/base/_base.scss */
+img {
+  /* Responsive images */
+  max-width: 100%;
+  height: auto;
+  /* Suppress the space beneath the baseline */
+  vertical-align: bottom;
+}
+
+/* Set 1 unit of vertical rhythm on the top and bottom margin. */
+/* line 54, ../sass/base/_base.scss */
+p,
+pre,
+ul {
+  margin: 1.4em 0;
+}
+
+/* line 60, ../sass/base/_base.scss */
+ul {
+  list-style: disc;
+  margin: 0;
+  padding: .5em 0;
+}
+
+/* line 67, ../sass/base/_base.scss */
+.block-menu a {
+  margin: 0;
+}
+/* line 71, ../sass/base/_base.scss */
+.block-menu ul li ul {
+  margin-left: 1em;
+}
+
+/**
+  * CLASSES
+  *********
+  */
+/* line 80, ../sass/base/_base.scss */
+.clear {
+  clear: both;
+}
+
+/* line 84, ../sass/base/_base.scss */
+.link {
+  color: #26aee8;
+  text-decoration: none;
+}
+
+/* line 89, ../sass/base/_base.scss */
+.more {
+  color: #26aee8;
+  font-weight: bold;
+  background: url(../images/artspan-readmore.gif) center left no-repeat;
+  padding: 0 0 0 10px;
+  font-size: 0.9em;
+}
+
+/* line 97, ../sass/base/_base.scss */
+.padding-10 {
+  padding: 10px;
+}
+
+/* line 101, ../sass/base/_base.scss */
+.padding-20 {
+  padding: 20px;
+}
+
+/**
+ * BUTTONS
+ */
+/* line 110, ../sass/base/_base.scss */
+input.submit-button,
+.submit-button {
+  cursor: pointer;
+  cursor: pointer;
+  padding: 0.5em 2em;
+  border: none;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  font-family: "RalewayBlack", sans-serif;
+  font-size: 1.1em;
+  font-variant: caps;
+  text-transform: uppercase;
+}
+
+/* line 126, ../sass/base/_base.scss */
+input.submit-button:hover, input.submit-button:focus,
+#site-slogan .submit-button:hover, #site-slogan .submit-button:focus {
+  background-color: #cfd9d6;
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.75);
+}
+
+/**
+ * MENUS GLOBAL
+ */
+/* line 138, ../sass/base/_base.scss */
+p#skip-link {
+  margin: 0;
+}
+
+/**
+ * TITLES GLOBAL
+ */
+/* line 145, ../sass/base/_base.scss */
+.page__title,
+.node__title,
+.block__title,
+.comments__title,
+.comments__form-title,
+.comment__title {
+  /* Comment title. */
+  margin: 0;
+}
+
+/**
+ * HEADER
+ ********
+ */
+/* line 160, ../sass/base/_base.scss */
+#header {
+  margin: .5em 0;
+}
+
+/**
+* HEADER IMAGE
+**************
+*/
+/* line 169, ../sass/base/_base.scss */
+#header-image-wrapper {
+  position: relative;
+  text-align: center;
+}
+
+/* line 174, ../sass/base/_base.scss */
+#site-slogan {
+  padding: 0 4% 0 0;
+  color: #ffffff;
+}
+/* line 178, ../sass/base/_base.scss */
+#site-slogan .title {
+  position: absolute;
+  top: 20%;
+  font-family: "MontserratBold", sans-serif;
+  font-variant: small-caps;
+  text-transform: uppercase;
+  line-height: 1.4em;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 2px 2px 4px #384345;
+}
+/* line 191, ../sass/base/_base.scss */
+#site-slogan .subtitle {
+  position: absolute;
+  top: 30%;
+  font-family: "MontserratBold", sans-serif;
+  text-transform: normal;
+  line-height: 1.4em;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 2px 2px 4px #384345;
+}
+/* line 203, ../sass/base/_base.scss */
+#site-slogan .button-wrapper {
+  position: absolute;
+  top: 55%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 210, ../sass/base/_base.scss */
+#site-slogan .button-wrapper .submit-button {
+  background: #172f50;
+  margin-left: auto;
+  margin-right: auto;
+  width: 12em;
+}
+/* line 216, ../sass/base/_base.scss */
+#site-slogan .button-wrapper .submit-button a {
+  color: #ffffff;
+}
+
+/* Wrapping link for logo. */
+/* line 226, ../sass/base/_base.scss */
+.header__logo {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 235, ../sass/base/_base.scss */
+a#to-main-menu,
+a#to-page-top {
+  height: 4em;
+  line-height: 4em;
+  width: 4em;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-color: #26aee8;
+  color: #ffffff;
+  display: inline-block;
+  font-family: "MontserratBold", sans-serif;
+  font-size: 1em;
+  margin: 0 0.5em 0 0;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  float: right;
+}
+/* line 254, ../sass/base/_base.scss */
+a#to-main-menu a:hover, a#to-main-menu a:focus,
+a#to-page-top a:hover,
+a#to-page-top a:focus {
+  color: #cfd9d6;
+  background: #384345;
+}
+
+/* line 261, ../sass/base/_base.scss */
+#main-menu-wrapper {
+  display: none;
+}
+
+/**
+ * ASIDE
+ */
+/* line 269, ../sass/base/_base.scss */
+.page__title {
+  margin-top: 0.4em;
+}
+
+/* line 277, ../sass/base/_base.scss */
+.breadcrumb ol {
+  list-style: none;
+}
+/* line 280, ../sass/base/_base.scss */
+.breadcrumb li {
+  font-family: "MontserratBold", sans-serif;
+  padding-left: 1em;
+  text-indent: -1em;
+  text-transform: uppercase;
+}
+/* line 286, ../sass/base/_base.scss */
+.breadcrumb li:before {
+  color: #26aee8;
+  content: "<<";
+  padding-right: 5px;
+}
+
+/* line 297, ../sass/base/_base.scss */
+#sidebar-nav {
+  display: none;
+}
+
+/**
+  * CONTENT
+  *********
+  */
+/* line 305, ../sass/base/_base.scss */
+#main {
+  margin-bottom: 0.5em;
+}
+
+/**
+  * FLEXIBLE GRID
+  ***************
+  */
+/* line 313, ../sass/base/_base.scss */
+.flex-title h3 {
+  margin-top: 1em;
+}
+
+/* line 317, ../sass/base/_base.scss */
+.flex-left p,
+.flex-right p {
+  margin: 0.25em 0.75em 0.25em 0;
+}
+
+/**
+  * UPCOMING EVENTS
+  *****************
+  */
+/* line 328, ../sass/base/_base.scss */
+.upcoming-events .ui-tabs .ui-tabs-nav li {
+  float: right;
+}
+/* line 332, ../sass/base/_base.scss */
+.upcoming-events .ui-widget-header,
+.upcoming-events .ui-state-default,
+.upcoming-events .ui-widget-content,
+.upcoming-events .ui-widget-content .ui-state-default,
+.upcoming-events .ui-widget-header .ui-state-default {
+  background: none;
+  border: none;
+}
+/* line 341, ../sass/base/_base.scss */
+.upcoming-events .ui-state-active a,
+.upcoming-events .ui-state-active a:link,
+.upcoming-events .ui-state-active a:visited,
+.upcoming-events .ui-state-default a,
+.upcoming-events .ui-state-default a:link,
+.upcoming-events .ui-state-default a:visited {
+  color: #26aee8;
+  font-size: 16.9px;
+  text-transform: uppercase;
+  font-family: "MontserratBold", sans-serif;
+  margin: 0 0 .4em;
+}
+/* line 354, ../sass/base/_base.scss */
+.upcoming-events .ui-state-active a:active,
+.upcoming-events .ui-state-default a:active {
+  color: #ffffff;
+  background-color: #26aee8;
+}
+/* line 360, ../sass/base/_base.scss */
+.upcoming-events .views-row {
+  border: 2px solid #cfd9d6;
+  padding-bottom: 0.5em;
+  min-height: 33em;
+  margin-bottom: 2em;
+}
+/* line 366, ../sass/base/_base.scss */
+.upcoming-events .views-row .event-title {
+  text-align: center;
+  padding: 1em 0.5em 0;
+  color: #26aee8;
+}
+/* line 372, ../sass/base/_base.scss */
+.upcoming-events .views-row .event-title a {
+  color: #26aee8;
+}
+/* line 375, ../sass/base/_base.scss */
+.upcoming-events .views-row .event-date {
+  font-family: "MontserratRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  font-size: 14.3px;
+  line-height: 20.02px;
+  text-align: center;
+  text-transform: uppercase;
+}
+/* line 383, ../sass/base/_base.scss */
+.upcoming-events .views-row .description span,
+.upcoming-events .views-row .views-field-body p,
+.upcoming-events .views-row .views-field-street span,
+.upcoming-events .views-row .views-field-city span,
+.upcoming-events .views-row .views-field-province span {
+  font-family: "RalewayRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  font-size: 13px;
+}
+/* line 392, ../sass/base/_base.scss */
+.upcoming-events .views-row p .description span,
+.upcoming-events .views-row .views-field-body p {
+  margin: 1em 0.5em 0.75em;
+  line-height: 1.4em;
+  text-align: center;
+}
+/* line 400, ../sass/base/_base.scss */
+.upcoming-events .views-row #events-graphic-wrapper img.events-graphic {
+  display: block;
+  margin: auto;
+}
+/* line 405, ../sass/base/_base.scss */
+.upcoming-events .views-row #events-graphic-wrapper .horizontal-line {
+  width: 3em;
+}
+/* line 410, ../sass/base/_base.scss */
+.upcoming-events .views-row .gallery-name p,
+.upcoming-events .views-row .views-field-street p,
+.upcoming-events .views-row .views-field-city p,
+.upcoming-events .views-row .views-field-province p {
+  color: #26aee8;
+}
+/* line 418, ../sass/base/_base.scss */
+.upcoming-events .views-row .gallery-name {
+  text-align: center;
+  color: #26aee8;
+  font-family: "RalewayBold", sans-serif;
+  margin-bottom: 0;
+}
+/* line 425, ../sass/base/_base.scss */
+.upcoming-events .views-row .views-field-street p,
+.upcoming-events .views-row .views-field-city p,
+.upcoming-events .views-row .views-field-province p {
+  font-family: "RalewayRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  text-align: center;
+  margin: 0.1em 0.2em;
+}
+
+/**
+  * HOME PAGE
+  ***********
+  */
+/* line 444, ../sass/base/_base.scss */
+.homepage #page-title {
+  display: none;
+}
+/* line 449, ../sass/base/_base.scss */
+.homepage h2.block-title {
+  color: #172f50;
+  font-family: "MontserratRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  font-size: 22.1px;
+  font-variant: caps;
+  line-height: 30.94px;
+  text-align: left;
+  text-transform: uppercase;
+  margin: 0 0 .4em;
+}
+/* line 460, ../sass/base/_base.scss */
+.homepage .featured-event-title {
+  font-family: "MontserratBold", sans-serif;
+  font-size: 16.9px;
+  line-height: 23.66px;
+}
+/* line 466, ../sass/base/_base.scss */
+.homepage .featured-event-date,
+.homepage #header-image-artist {
+  text-align: left;
+  text-transform: uppercase;
+}
+/* line 471, ../sass/base/_base.scss */
+.homepage .featured-event-date {
+  font-family: "MontserratRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  font-size: 14.3px;
+  line-height: 20.02px;
+}
+/* line 477, ../sass/base/_base.scss */
+.homepage #artspan_profile_back_to_results,
+.homepage .more-link,
+.homepage #artist-name,
+.homepage #member-subtitle {
+  font-family: "MontserratBold", sans-serif;
+  text-transform: uppercase;
+  margin: 0 auto;
+}
+/* line 486, ../sass/base/_base.scss */
+.homepage .featured-event-body span {
+  font-family: "RalewayRegular", "Open Sans", "Nimbus Sans L", sans-serif !important;
+}
+/* line 490, ../sass/base/_base.scss */
+.homepage #header-image-artist {
+  font-family: "MontserratBold", sans-serif;
+  color: #ffffff;
+  left: 9%;
+  position: absolute;
+  top: 92%;
+  font-size: 80%;
+  line-height: 80%;
+  text-shadow: 2px 2px 4px #384345;
+}
+/* line 509, ../sass/base/_base.scss */
+.homepage #block-views-events-featured-event {
+  background-color: #172f50;
+  padding: 3em 0.5em 1em;
+}
+/* line 513, ../sass/base/_base.scss */
+.homepage #block-views-events-featured-event #event-block-title {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+}
+/* line 519, ../sass/base/_base.scss */
+.homepage #block-views-events-featured-event h2.block-title {
+  color: #26aee8;
+}
+/* line 523, ../sass/base/_base.scss */
+.homepage #block-views-events-featured-event .mainfeaturedevent {
+  padding-bottom: 4em;
+}
+/* line 526, ../sass/base/_base.scss */
+.homepage #block-views-events-featured-event .mainfeaturedevent .featured-event-title {
+  color: #ffffff;
+}
+/* line 530, ../sass/base/_base.scss */
+.homepage #block-views-events-featured-event .mainfeaturedevent .featured-event-date {
+  color: #ffffff;
+  margin: 0 0 0.4em;
+}
+/* line 535, ../sass/base/_base.scss */
+.homepage #block-views-events-featured-event .mainfeaturedevent .featured-event-body p {
+  color: #ffffff;
+  text-align: center;
+}
+/* line 541, ../sass/base/_base.scss */
+.homepage #block-views-events-featured-event .mainfeaturedevent .button-wrapper {
+  width: 100%;
+}
+/* line 545, ../sass/base/_base.scss */
+.homepage #block-views-events-featured-event .mainfeaturedevent .button-wrapper .submit-button {
+  background: #ffffff;
+  margin: 0 auto;
+  width: 12em;
+}
+/* line 550, ../sass/base/_base.scss */
+.homepage #block-views-events-featured-event .mainfeaturedevent .button-wrapper .submit-button a {
+  color: #172f50;
+}
+/* line 559, ../sass/base/_base.scss */
+.homepage #block-views-events-featured-event .views-field-field-event-image .event-circle {
+  overflow: hidden;
+  margin: 4em 0.5em -0.5em;
+  display: block;
+  border: 0.75em solid #10456d;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+}
+/* line 574, ../sass/base/_base.scss */
+.homepage .view-display-id-featured_events_secondary {
+  background-color: #ffffff;
+}
+/* line 577, ../sass/base/_base.scss */
+.homepage .view-display-id-featured_events_secondary .view-content {
+  padding: 0.5em;
+}
+/* line 581, ../sass/base/_base.scss */
+.homepage .view-display-id-featured_events_secondary .views-row-1,
+.homepage .view-display-id-featured_events_secondary .views-row-2,
+.homepage .view-display-id-featured_events_secondary .views-row-3,
+.homepage .view-display-id-featured_events_secondary .views-row-4 {
+  margin-bottom: 2em;
+}
+/* line 588, ../sass/base/_base.scss */
+.homepage .view-display-id-featured_events_secondary .featured-event-body {
+  color: #384345;
+}
+/* line 592, ../sass/base/_base.scss */
+.homepage .view-display-id-featured_events_secondary .more-link {
+  padding: 0.5em;
+}
+/* line 596, ../sass/base/_base.scss */
+.homepage .view-display-id-featured_events_secondary .more-link:before {
+  color: #26aee8;
+  content: "<<";
+  padding-right: 5px;
+}
+/* line 604, ../sass/base/_base.scss */
+.homepage #colored-bar {
+  margin: 0 0 1em;
+}
+/* line 608, ../sass/base/_base.scss */
+.homepage #members {
+  padding-bottom: 4em;
+}
+/* line 611, ../sass/base/_base.scss */
+.homepage #members #member-title h1 {
+  text-align: center;
+}
+/* line 615, ../sass/base/_base.scss */
+.homepage #members #member-subtitle {
+  color: #26aee8;
+  text-align: center;
+}
+/* line 620, ../sass/base/_base.scss */
+.homepage #members #member-text p {
+  text-align: center;
+}
+/* line 625, ../sass/base/_base.scss */
+.homepage #members .circle-wrapper {
+  position: relative;
+  margin-bottom: 2em;
+}
+/* line 630, ../sass/base/_base.scss */
+.homepage #members .circle-image-wrapper {
+  text-align: center;
+}
+/* line 634, ../sass/base/_base.scss */
+.homepage #members .circle-text {
+  position: absolute;
+  top: 5em;
+  left: 9em;
+  width: 13em;
+}
+/* line 640, ../sass/base/_base.scss */
+.homepage #members .circle-text h3 {
+  background-color: #ffffff;
+  padding-left: 0.5em;
+}
+
+/**
+  * ARTIST PROFILE PAGE
+  */
+/* line 655, ../sass/base/_base.scss */
+.artist-profile-page #artspan_profile_info_block {
+  padding: 1em 1em 3em 2em;
+}
+/* line 658, ../sass/base/_base.scss */
+.artist-profile-page #artspan_profile_info_block #artspan_profile_back_to_results {
+  font-family: "MontserratBold", sans-serif;
+  text-transform: uppercase;
+  margin: 0 auto;
+}
+/* line 664, ../sass/base/_base.scss */
+.artist-profile-page #artspan_profile_info_block #artspan_profile_name p {
+  color: #172f50;
+  font-family: "MontserratBold", sans-serif;
+  font-size: 16.9px;
+  margin: 0.5em 0 auto;
+  text-transform: uppercase;
+}
+/* line 673, ../sass/base/_base.scss */
+.artist-profile-page #artspan_profile_info_block #artspan_profile_head_shot img {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  margin: 4em auto 0 auto;
+  display: block;
+  /* Stretch 
+        height: 100%;
+        width: 100%; */
+}
+/* line 688, ../sass/base/_base.scss */
+.artist-profile-page #artspan_profile_info_block #artspan_profile_websites a,
+.artist-profile-page #artspan_profile_info_block #artspan_profile_email a {
+  color: #26aee8;
+}
+/* line 693, ../sass/base/_base.scss */
+.artist-profile-page #artspan_profile_info_block #artspan_profile_websites a,
+.artist-profile-page #artspan_profile_info_block #artspan_profile_phone p,
+.artist-profile-page #artspan_profile_info_block #artspan_profile_email a,
+.artist-profile-page #artspan_profile_info_block #artspan_profile_email p {
+  margin: 0;
+  padding: 0;
+}
+/* line 701, ../sass/base/_base.scss */
+.artist-profile-page #artspan_profile_info_block #artspan_profile_websites {
+  margin-top: 3em;
+}
+/* line 705, ../sass/base/_base.scss */
+.artist-profile-page #artspan_profile_info_block #artspan_studio_event_weekend_info {
+  font-family: "MontserratBold", sans-serif;
+  font-size: 14.3px;
+  line-height: 20.02px;
+}
+/* line 711, ../sass/base/_base.scss */
+.artist-profile-page #artspan_profile_info_block #artspan_studio_event_name,
+.artist-profile-page #artspan_profile_info_block #artspan_studio_event_location_info {
+  color: #26aee8;
+}
+/* line 716, ../sass/base/_base.scss */
+.artist-profile-page #artspan_profile_info_block #artspan_studio_event_name {
+  font-family: "RalewayBold", sans-serif;
+  padding-top: 1em;
+}
+/* line 721, ../sass/base/_base.scss */
+.artist-profile-page #artspan_profile_info_block .artspan_profile_separator {
+  font-family: "RalewayBlack", sans-serif;
+}
+/* line 726, ../sass/base/_base.scss */
+.artist-profile-page #artspan_profile_image_block {
+  position: relative;
+}
+/* line 729, ../sass/base/_base.scss */
+.artist-profile-page #artspan_profile_image_block ul {
+  list-style: none;
+}
+/* line 733, ../sass/base/_base.scss */
+.artist-profile-page #artspan_profile_image_block #artspan_pull_quote_text {
+  position: absolute;
+  top: 53%;
+  left: 4%;
+  color: #384345;
+  text-transform: lowercase;
+  font-family: "RalewayLightItalic", sans-serif;
+  width: 92%;
+  text-align: center;
+  font-size: 22.1px;
+  line-height: 30.94px;
+}
+/* line 746, ../sass/base/_base.scss */
+.artist-profile-page #artspan_profile_image_block #artspan_pull_quote_text:before {
+  color: #384345;
+  content: "“";
+  font-family: Georgia, "Times New Roman", "DejaVu Serif", serif;
+  vertical-align: 0.7em;
+  margin-left: -0.2em;
+  font-size: 48px;
+  line-height: 67px;
+}
+
+/**
+* ARTIST SEARCH PAGE
+*/
+/* line 765, ../sass/base/_base.scss */
+.art-search-page h1 {
+  padding: 1em 0 0.4em 1em;
+}
+/* line 769, ../sass/base/_base.scss */
+.art-search-page .view-filters {
+  margin: 0;
+  padding: 0;
+}
+/* line 775, ../sass/base/_base.scss */
+.art-search-page .view-filters table tbody tr td {
+  padding: 0.2em;
+}
+/* line 779, ../sass/base/_base.scss */
+.art-search-page .view-filters .views-exposed-widget {
+  background: #f4f6fa none repeat scroll 0 0;
+  border: 3px solid #cfd9d6;
+  padding: 1em;
+  margin-top: 0.75em 0 0.5em;
+  color: #384345;
+}
+/* line 786, ../sass/base/_base.scss */
+.art-search-page .view-filters .views-exposed-widget #artspan_search_description {
+  font-size: 16.9px;
+  line-height: 23.66px;
+  font-family: "MontserratRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  color: #384345;
+  padding-bottom: 1em;
+}
+/* line 794, ../sass/base/_base.scss */
+.art-search-page .view-filters .views-exposed-widget #artspan_studio_info {
+  font-size: 14.3px;
+  line-height: 20.02px;
+  font-family: "MontserratRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  color: #384345;
+  padding-bottom: 0.75em;
+}
+/* line 802, ../sass/base/_base.scss */
+.art-search-page .view-filters .views-exposed-widget #artspan_medium_search,
+.art-search-page .view-filters .views-exposed-widget #artspan_style_search,
+.art-search-page .view-filters .views-exposed-widget #artspan_weekend_search,
+.art-search-page .view-filters .views-exposed-widget #artspan_neighborhood_search,
+.art-search-page .view-filters .views-exposed-widget #artspan_sudio_search {
+  padding: .7em 0 .2em;
+}
+/* line 811, ../sass/base/_base.scss */
+.art-search-page .view-filters .views-exposed-widget label {
+  color: #384345;
+  margin-right: 0.5em;
+  font-size: 13px;
+}
+/* line 817, ../sass/base/_base.scss */
+.art-search-page .view-filters .views-exposed-widget #-wrapper {
+  display: none;
+}
+/* line 823, ../sass/base/_base.scss */
+.art-search-page .view-filters #exposed-widget-edit-keys label {
+  font-size: 23.4px;
+  font-family: "MontserratRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  color: #384345;
+}
+/* line 831, ../sass/base/_base.scss */
+.art-search-page .view-content {
+  padding-left: 1.5em;
+}
+/* line 835, ../sass/base/_base.scss */
+.art-search-page .view-content .item-list .views-field-php-3 {
+  font-weight: bold;
+  margin-bottom: .2em;
+}
+/* line 841, ../sass/base/_base.scss */
+.art-search-page .view-content li {
+  list-style: none;
+}
+
+/**
+* DASHBOARD
+***********
+*/
+/* line 855, ../sass/base/_base.scss */
+.dashboard-page #page-title {
+  margin: 1em 0 0.5em 0.5em;
+}
+/* line 858, ../sass/base/_base.scss */
+.dashboard-page .home-link a {
+  margin: 0 0 0 0.9em;
+  font-family: "MontserratRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  font-size: 14.3px;
+  line-height: 20.02px;
+  text-align: left;
+  text-transform: uppercase;
+}
+/* line 867, ../sass/base/_base.scss */
+.dashboard-page td {
+  width: 30%;
+}
+/* line 870, ../sass/base/_base.scss */
+.dashboard-page .artspan-block-fieldset {
+  padding: 0;
+  margin: 0;
+}
+/* line 875, ../sass/base/_base.scss */
+.dashboard-page .artspan-block-legend {
+  font-size: 16.9px;
+  line-height: 23.66px;
+  padding: 1.5em 0.5em;
+  color: #172f50;
+  font-family: "MontserratRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  text-transform: uppercase;
+}
+/* line 884, ../sass/base/_base.scss */
+.dashboard-page .field-content li,
+.dashboard-page .artspan-block-content li {
+  list-style: none;
+}
+
+/**
+ * SOCIAL MEDIA
+ **************
+ */
+/* line 897, ../sass/base/_base.scss */
+#social-media {
+  background-color: #cfd9d6;
+  margin: .5em 0 0 0;
+}
+/* line 902, ../sass/base/_base.scss */
+#social-media #block-block-12,
+#social-media #block-instagram-block-instagram-block,
+#social-media #block-twitter-block-1 {
+  padding: 0.75em;
+  text-align: center;
+}
+/* line 909, ../sass/base/_base.scss */
+#social-media h2.block-title {
+  font-family: "MontserratRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+  font-size: 16.9px;
+  letter-spacing: .075em;
+  word-spacing: .1em;
+  line-height: 1.2em;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+}
+/* line 920, ../sass/base/_base.scss */
+#social-media #block-block-12 {
+  background-color: #d97bad;
+}
+/* line 924, ../sass/base/_base.scss */
+#social-media #block-block-12 h2.block-title,
+#social-media #block-block-12 .email-label {
+  color: #ffffff;
+}
+/* line 930, ../sass/base/_base.scss */
+#social-media #block-block-12 input.submit-button {
+  margin-top: 0.5em;
+  background: #ffffff;
+  color: #172f50;
+}
+/* line 937, ../sass/base/_base.scss */
+#social-media #block-instagram-block-instagram-block h2.block-title,
+#social-media #block-twitter-block-1 h2.block-title {
+  color: #384345;
+}
+/* line 942, ../sass/base/_base.scss */
+#social-media img.instagram-images {
+  margin: 0.15em 0;
+  padding: 0.35em;
+  width: 7em;
+  height: 7em;
+}
+
+/**
+  * FOOTER MENU
+  *************
+  */
+/* line 956, ../sass/base/_base.scss */
+#footer-menu #block-menu-menu-menu-footer-menu li {
+  display: none;
+}
+/* line 960, ../sass/base/_base.scss */
+#footer-menu #block-system-main-menu a {
+  font-size: 14.3px;
+}
+/* line 963, ../sass/base/_base.scss */
+#footer-menu #badge-nav {
+  margin-bottom: 1em;
+}
+
+/**
+  * FOOTER BAR
+  *************
+  */
+/* line 972, ../sass/base/_base.scss */
+#footer-bar {
+  background-color: #172f50;
+}
+/* line 976, ../sass/base/_base.scss */
+#footer-bar #block-menu-menu-menu-legalese-menu ul {
+  text-align: right;
+  margin-right: 0.6em;
+}
+/* line 980, ../sass/base/_base.scss */
+#footer-bar #block-menu-menu-menu-legalese-menu .menu__item.is-leaf,
+#footer-bar #block-menu-menu-menu-legalese-menu .menu__item.is-collapsed,
+#footer-bar #block-menu-menu-menu-legalese-menu .menu__item.is-expanded {
+  list-style-type: none;
+  list-style-image: none;
+}
+
+/* line 996, ../sass/base/_base.scss */
+#footer #to-page-top {
+  margin-top: 0.4em;
+}
+
+/* line 1004, ../sass/base/_base.scss */
+.view-artist-artwork-images-page a.tabledrag-handle .handle {
+  height: 30px !important;
+  width: 20px !important;
+  margin: -0.4em 0.5em -0.4em 1em;
+}
+/* line 1010, ../sass/base/_base.scss */
+.view-artist-artwork-images-page img {
+  padding: 0 0.5em;
+}
+
+/**
+  * @file
+  * Base rules are the defaults. They are almost exclusively single element 
+  * selectors but it could include attribute selectors, pseudo-class selectors, 
+  * child selectors or sibling selectors. Essentially, a base style says that 
+  * wherever this element is on the page, it should look like this. In SMACSS, 
+  * this file contains all the "base rules". http://smacss.com/book/type-base
+  */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
+ *    `em` units.
+ */
+/* Layout rules */
+/**
+  * THE CONTAINER MIXIN
+  **********************
+  * @include container( [<length>] );
+  *
+  *
+  * SPAN (MIXIN)
+  **************
+  * Set any element to span a portion of your layout. For a floated or 
+  * isolated layout, this will add necessary floats, widths, and margins.
+  *   width - refers to the number of columns the element going to take up
+  *   wide/wider - a optional argument lets you expand the width of the 
+  *       column to include 1 or 2 more gutters respectively
+  *   of - keyword to let Susy know that the layout is coming up
+  *   layout - context (number of columns the parent container is made up of)
+  *   last - an optional argument that tells Susy that this element is 
+  *       supposed to be the last item in the row
+  *
+  *   @include span( <width> [<wide / wider>] of <layout> [<last>] );
+  *
+  *     //This has a width of 3 columns + 1 gutter, out of 9 columns and is supposed 
+  *     //to be the last item within the context.
+  *     .some-selector {
+  *       @include span(3 wide of 9 last);
+  *     }
+  *
+  *
+  * SPAN FUNCTION
+  ***************
+  *    // This has a width of 3 columns out of 9 columns
+  *    .some-selector {
+  *      width: span(3 of 9);
+  *    }
+  *   // This has a padding of 1 column out of 9 columns 
+  *   .some-selector {
+  *     padding-left: span(1 of 9); 
+  *   }
+  *
+  *
+  * GUTTER FUNCTION
+  ******************
+  * Only takes one argument, the context (number of columns the parent 
+  * container is made up of). 
+  *
+  *   // This outputs margin that equals to 1 gutter width in a 9 column layout
+  *   .some-selector {
+  *     margin-right: gutter(9); 
+  *   }
+  *
+  * LAYOUTS
+  *********
+  * @include layout($widelayout); // sets this as the active map after it is defined  
+  * @include layout(24 1/4 fluid float after); span-grid-keywords (any order for keywords)
+  * $widelayout: layout(24 1/4 fluid float after);
+  * @include with-layout(12) { sass }  // defines a temporary column setting
+  * subcolumn - main {@include span(21); .col1, .col2, .col3 {@include span (3 of 6);}} based on 24 columns
+  *
+  */
+/**
+  * Here are all the global Susy settings with their default values. You can 
+  * set your own global defaults, or create individual layout maps to access 
+  * as needed. For global settings, create a $susy variable with any values 
+  * that you need.
+  * You'll want to play around with the defaults and try them out depending on 
+  * how you want to work with Susy. 
+    $susy: (
+      flow: ltr,
+      math: fluid,
+      output: float,
+      gutter-position: after,
+      container: auto,
+      container-position: center,
+      columns: 4,
+      gutters: .25,
+      column-width: false,
+      global-box-sizing: content-box,
+      last-flow: to,
+      debug: (
+        image: hide,
+        color: rgba(#66f, .25),
+        output: background,
+        toggle: top right,
+      ),
+      use-custom: (
+        background-image: true,
+        background-options: false,
+        box-sizing: true,
+        clearfix: false,
+        rem: true,
+      )
+    );
+*/
+/* line 21, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/language/susy/_box-sizing.scss */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 123, ../sass/layouts/_grid.scss */
+#page {
+  max-width: 59em;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+#page:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* line 130, ../sass/layouts/_grid.scss */
+#header {
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 133, ../sass/layouts/_grid.scss */
+#header #logo {
+  width: 74.57627%;
+  float: left;
+  margin-right: 1.69492%;
+}
+/* line 137, ../sass/layouts/_grid.scss */
+#header #button-menu {
+  width: 23.72881%;
+  float: right;
+  margin-right: 0;
+}
+
+/* line 142, ../sass/layouts/_grid.scss */
+.left-aside #main {
+  max-width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+.left-aside #main:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* line 146, ../sass/layouts/_grid.scss */
+.flex-container {
+  max-width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+.flex-container:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+/* line 148, ../sass/layouts/_grid.scss */
+.flex-container .flex-left {
+  width: 49.15254%;
+  float: left;
+  margin-right: 1.69492%;
+}
+/* line 151, ../sass/layouts/_grid.scss */
+.flex-container .flex-right {
+  width: 49.15254%;
+  float: right;
+  margin-right: 0;
+}
+
+/* line 157, ../sass/layouts/_grid.scss */
+.no-aside #main {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+.no-aside #main:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* line 162, ../sass/layouts/_grid.scss */
+.homepage #members {
+  max-width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+.homepage #members:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* line 169, ../sass/layouts/_grid.scss */
+#navigation-footer {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+#navigation-footer:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/**
+  * SMART PHONE
+  *************
+  *
+  */
+@media (max-width: 650px) {
+
+   #user-register-form #edit-account .form-item .username,
+   #user-register-form #edit-account .form-item #edit-mail { 
+      width: 100% !important;
+   }
+
+   .crm-container .crm-section .content-description {
+      width: calc(100% - 170px) !important;
+   }
+
+   .crm-container .crm-section .content {
+      overflow: visible;
+      margin-left: 0px !important;
+      width: 100% !important;
+   }
+
+   .crm-container .crm-profile .crm-section .content {
+     width: 80% !important;
+   }
+
+   .crm-container .crm-section .content input[type=text],
+   .crm-container .crm-main-content-wrapper form .crm-contribution-main-form-block input[type=text] {
+     width: 95% !important;
+     overflow: visible !important;
+   }
+  
+   .password-strength {
+     float: left;
+     margin-bottom: 1.4em;
+     width: 100%;
+   }
+   
+   .password-parent,
+   .confirm-parent {
+     width: 100%;
+   }
+
+   .confirm-parent .desription {
+     width: 100% !important;
+     float: left;
+   }
+
+   .form-item .password-suggestions {
+     width: 100% !important; 
+   }
+}
+
+/**
+  * SMALL
+  *******
+  *
+  */
+@media (min-width: 650px) and (max-width: 767px) {
+  /* line 182, ../sass/layouts/_grid.scss */
+  .homepage #members {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .homepage #members:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 185, ../sass/layouts/_grid.scss */
+  .homepage #members #member-options {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .homepage #members #member-options:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 188, ../sass/layouts/_grid.scss */
+  .homepage #members #member-options #art-lovers {
+    width: 44.91525%;
+    float: left;
+    margin-right: 1.69492%;
+  }
+  /* line 192, ../sass/layouts/_grid.scss */
+  .homepage #members #member-options #artists {
+    width: 44.91525%;
+    float: left;
+    margin-right: 1.69492%;
+  }
+}
+/**
+  * MEDIUM-MIN
+  ************
+  * these changes persist to large devices
+  * increase the size of the grid
+  */
+@media (min-width: 768px) {
+  /* line 211, ../sass/layouts/_grid.scss */
+  #page {
+    max-width: 119em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  #page:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+
+  /* line 219, ../sass/layouts/_grid.scss */
+  .homepage #block-views-events-featured-event {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .homepage #block-views-events-featured-event:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 222, ../sass/layouts/_grid.scss */
+  .homepage #block-views-events-featured-event #event-block-title {
+    width: 28.57143%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 226, ../sass/layouts/_grid.scss */
+  .homepage #block-views-events-featured-event .view-display-id-featured_event {
+    width: 70.58824%;
+    float: right;
+    margin-right: 0;
+  }
+  /* line 229, ../sass/layouts/_grid.scss */
+  .homepage #block-views-events-featured-event .view-display-id-featured_event .mainfeaturedevent {
+    width: 24.36975%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 233, ../sass/layouts/_grid.scss */
+  .homepage #block-views-events-featured-event .view-display-id-featured_event .views-field-field-event-image {
+    width: 53.78151%;
+    float: right;
+    margin-right: 0;
+  }
+  /* line 239, ../sass/layouts/_grid.scss */
+  .homepage .view-display-id-featured_events_secondary {
+    max-width: 93%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .homepage .view-display-id-featured_events_secondary:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 242, ../sass/layouts/_grid.scss */
+  .homepage .view-display-id-featured_events_secondary .view-content {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .homepage .view-display-id-featured_events_secondary .view-content:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 245, ../sass/layouts/_grid.scss */
+  .homepage .view-display-id-featured_events_secondary .view-content .views-row {
+    width: 24.15966%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 251, ../sass/layouts/_grid.scss */
+  .homepage #colored-bar {
+    max-width: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .homepage #colored-bar:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 255, ../sass/layouts/_grid.scss */
+  .homepage #members {
+    max-width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .homepage #members:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 258, ../sass/layouts/_grid.scss */
+  .homepage #members #member-options {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .homepage #members #member-options:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 261, ../sass/layouts/_grid.scss */
+  .homepage #members #member-options #art-lovers {
+    width: 47.47899%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 265, ../sass/layouts/_grid.scss */
+  .homepage #members #member-options #artists {
+    width: 47.47899%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+}
+/**
+  * LARGE
+  *******
+  *
+  * these persist for all large sizes - the aside (sidebar) appears
+  * the main menu is moved to the top and the footer menu appears
+  */
+@media (min-width: 1005px) {
+  /* line 288, ../sass/layouts/_grid.scss */
+  #header {
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  #header:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 291, ../sass/layouts/_grid.scss */
+  #header #logo {
+    width: 15.96639%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 295, ../sass/layouts/_grid.scss */
+  #header #main-menu {
+    width: 83.19328%;
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 305, ../sass/layouts/_grid.scss */
+  .left-aside #main {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    *zoom: 1;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .left-aside #main:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 309, ../sass/layouts/_grid.scss */
+  .left-aside #main aside {
+    width: 30.67227%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 314, ../sass/layouts/_grid.scss */
+  .left-aside #main #content {
+    width: 68.48739%;
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 320, ../sass/layouts/_grid.scss */
+  .flex-container {
+    max-width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .flex-container:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 322, ../sass/layouts/_grid.scss */
+  .flex-container .flex-left {
+    width: 49.57983%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 325, ../sass/layouts/_grid.scss */
+  .flex-container .flex-right {
+    width: 49.57983%;
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 333, ../sass/layouts/_grid.scss */
+  .upcoming-events .view-events-upcoming-events {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .upcoming-events .view-events-upcoming-events:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 336, ../sass/layouts/_grid.scss */
+  .upcoming-events .view-events-upcoming-events .views-row {
+    width: 49.15966%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+
+  /* line 347, ../sass/layouts/_grid.scss */
+  .art-search-page .view-artist-profile-search {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .art-search-page .view-artist-profile-search:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 350, ../sass/layouts/_grid.scss */
+  .art-search-page .view-artist-profile-search .view-content {
+    width: 62.18487%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 353, ../sass/layouts/_grid.scss */
+  .art-search-page .view-artist-profile-search .view-content li {
+    width: 30.67227%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 358, ../sass/layouts/_grid.scss */
+  .art-search-page .view-artist-profile-search .view-filters {
+    width: 36.97479%;
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 367, ../sass/layouts/_grid.scss */
+  #artspan_profile_body {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  #artspan_profile_body:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 370, ../sass/layouts/_grid.scss */
+  #artspan_profile_body #artspan_profile_info_block {
+    width: 32.77311%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 374, ../sass/layouts/_grid.scss */
+  #artspan_profile_body #artspan_profile_image_block {
+    width: 62.18487%;
+    float: right;
+    margin-right: 0;
+  }
+  /* line 377, ../sass/layouts/_grid.scss */
+  #artspan_profile_body #artspan_profile_image_block li {
+    width: 49.15966%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+
+  /* line 389, ../sass/layouts/_grid.scss */
+  .homepage #members {
+    max-width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .homepage #members:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+
+  /* line 400, ../sass/layouts/_grid.scss */
+  .region-social-media-footer {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .region-social-media-footer:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 403, ../sass/layouts/_grid.scss */
+  .region-social-media-footer #block-block-12 {
+    width: 32.77311%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 406, ../sass/layouts/_grid.scss */
+  .region-social-media-footer #block-instagram-block-instagram-block {
+    width: 32.77311%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 409, ../sass/layouts/_grid.scss */
+  .region-social-media-footer #block-twitter-block-1 {
+    width: 32.77311%;
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 414, ../sass/layouts/_grid.scss */
+  #footer-menu {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  #footer-menu:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 417, ../sass/layouts/_grid.scss */
+  #footer-menu #footer-logo {
+    width: 20.16807%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 420, ../sass/layouts/_grid.scss */
+  #footer-menu #navigation-footer {
+    width: 49.57983%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 423, ../sass/layouts/_grid.scss */
+  #footer-menu #badge-nav {
+    width: 20.16807%;
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 429, ../sass/layouts/_grid.scss */
+  #footer-bar li {
+    display: inline;
+  }
+}
+@media (min-width: 1234px) and (max-width: 1532px) {
+  /* line 441, ../sass/layouts/_grid.scss */
+  .art-search-page .view-artist-profile-search {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .art-search-page .view-artist-profile-search:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 444, ../sass/layouts/_grid.scss */
+  .art-search-page .view-artist-profile-search .view-content {
+    width: 66.38655%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 447, ../sass/layouts/_grid.scss */
+  .art-search-page .view-artist-profile-search .view-content li {
+    width: 30.67227%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 452, ../sass/layouts/_grid.scss */
+  .art-search-page .view-artist-profile-search .view-filters {
+    width: 32.77311%;
+    float: right;
+    margin-right: 0;
+  }
+}
+@media (min-width: 1533px) {
+  /* line 463, ../sass/layouts/_grid.scss */
+  .art-search-page .view-artist-profile-search {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
+  .art-search-page .view-artist-profile-search:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  /* line 466, ../sass/layouts/_grid.scss */
+  .art-search-page .view-artist-profile-search .view-content {
+    width: 70.58824%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 469, ../sass/layouts/_grid.scss */
+  .art-search-page .view-artist-profile-search .view-content li {
+    width: 30.67227%;
+    float: left;
+    margin-right: 0.84034%;
+  }
+  /* line 474, ../sass/layouts/_grid.scss */
+  .art-search-page .view-artist-profile-search .view-filters {
+    width: 28.57143%;
+    float: right;
+    margin-right: 0;
+  }
+}
+/* Responsive Media Queries */
+/**
+  * @file
+  * Media query for x-small breakpoint
+  */
+@media (min-width: 414px) and (max-width: 649px) {
+  /*
+    // colors for breakpoints - just for development
+    #social-media {
+      background-color: pink;
+    }
+    #site-slogan {
+      color: pink;
+    }
+  */
+  /**
+  * TYPOGRAPHY
+  ************
+  */
+  /*--------------*
+   * $HEADINGS    *
+   * ------------*/
+  /* line 47, ../sass/responsive/_xsmall.scss */
+  h1 {
+    font-size: 22.1px;
+    line-height: 30.94px;
+  }
+
+  /* line 52, ../sass/responsive/_xsmall.scss */
+  h2 {
+    font-size: 23.4px;
+    line-height: 32.76px;
+  }
+
+  /* line 57, ../sass/responsive/_xsmall.scss */
+  h3 {
+    font-size: 16.9px;
+    line-height: 23.66px;
+  }
+
+  /* line 62, ../sass/responsive/_xsmall.scss */
+  h4 {
+    font-size: 14.3px;
+    line-height: 20.02px;
+  }
+
+  /* line 67, ../sass/responsive/_xsmall.scss */
+  h5 {
+    font-size: 13px;
+    line-height: 18.2px;
+  }
+
+  /* line 72, ../sass/responsive/_xsmall.scss */
+  html {
+    font-size: 13px;
+  }
+
+  /**
+  * HOMEPAGE
+  **********
+  */
+  /* line 82, ../sass/responsive/_xsmall.scss */
+  .homepage #site-slogan .title {
+    font-size: 26px;
+    line-height: 36.4px;
+    top: 38%;
+  }
+  /* line 87, ../sass/responsive/_xsmall.scss */
+  .homepage #site-slogan .subtitle {
+    font-size: 14.3px;
+    line-height: 20.02px;
+    top: 51%;
+  }
+  /* line 93, ../sass/responsive/_xsmall.scss */
+  .homepage #site-slogan .button-wrapper {
+    top: 70%;
+  }
+  /* line 101, ../sass/responsive/_xsmall.scss */
+  .homepage #block-views-events-featured-event .mainfeaturedevent .featured-event-date span {
+    white-space: normal;
+  }
+  /* line 105, ../sass/responsive/_xsmall.scss */
+  .homepage #block-views-events-featured-event .views-field.views-field-field-event-image {
+    margin: auto;
+    width: 75%;
+  }
+  /* line 112, ../sass/responsive/_xsmall.scss */
+  .homepage #members .circle-text {
+    left: 14em;
+  }
+
+  /**
+  * ARTIST PROFILE PAGE
+  */
+  /* line 123, ../sass/responsive/_xsmall.scss */
+  .artist-profile-page #artspan_profile_image_block #artspan_pull_quote_text {
+    top: 55%;
+    width: 88%;
+  }
+
+  /**
+  * SOCIAL MEDIA
+  **********
+  */
+  /* line 136, ../sass/responsive/_xsmall.scss */
+  #social-media #block-instagram-block-instagram-block {
+    width: 95%;
+    margin: 0 auto;
+  }
+  /* line 140, ../sass/responsive/_xsmall.scss */
+  #social-media img.instagram-images {
+    width: 11em;
+    height: 11em;
+  }
+}
+/**
+  * @file
+  * Media query for small breakpoint
+  */
+@media (min-width: 650px) and (max-width: 767px) {
+  /*
+    // colors for breakpoints - just for development
+    #social-media {
+      background-color: blue;
+    }
+    #site-slogan {
+      color: blue;
+    }
+  */
+  /**
+    * TYPOGRAPHY
+    ************
+    */
+  /*--------------*
+   * $HEADINGS    *
+   * ------------*/
+  /* line 46, ../sass/responsive/_small.scss */
+  h1 {
+    font-size: 23.8px;
+    line-height: 33.32px;
+  }
+
+  /* line 51, ../sass/responsive/_small.scss */
+  h2 {
+    font-size: 25.2px;
+    line-height: 35.28px;
+  }
+
+  /* line 56, ../sass/responsive/_small.scss */
+  h3 {
+    font-size: 18.2px;
+    line-height: 25.48px;
+  }
+
+  /* line 61, ../sass/responsive/_small.scss */
+  h4 {
+    font-size: 15.4px;
+    line-height: 21.56px;
+  }
+
+  /* line 66, ../sass/responsive/_small.scss */
+  h5 {
+    font-size: 14px;
+    line-height: 19.6px;
+  }
+
+  /* line 71, ../sass/responsive/_small.scss */
+  #social-media .block-title {
+    font-size: 22.75px;
+  }
+
+  /* line 75, ../sass/responsive/_small.scss */
+  #footer-bar a {
+    font-size: 14px;
+    line-height: 19.6px;
+  }
+
+  /* line 80, ../sass/responsive/_small.scss */
+  html {
+    font-size: 14px;
+  }
+
+  /**
+  * HOMEPAGE
+  **********
+  */
+  /* line 90, ../sass/responsive/_small.scss */
+  .homepage #site-slogan .title {
+    font-size: 28px;
+    line-height: 39.2px;
+    top: 48%;
+  }
+  /* line 95, ../sass/responsive/_small.scss */
+  .homepage #site-slogan .subtitle {
+    font-size: 15.4px;
+    line-height: 21.56px;
+    top: 59%;
+  }
+  /* line 101, ../sass/responsive/_small.scss */
+  .homepage #site-slogan .button-wrapper {
+    top: 67%;
+  }
+  /* line 108, ../sass/responsive/_small.scss */
+  .homepage #block-views-events-featured-event .views-field.views-field-field-event-image {
+    margin: auto;
+    width: 55%;
+  }
+  /* line 115, ../sass/responsive/_small.scss */
+  .homepage #members .circle-text {
+    left: 11em;
+  }
+
+  /**
+* ARTIST PROFILE PAGE
+*/
+  /* line 127, ../sass/responsive/_small.scss */
+  .artist-profile-page #artspan_profile_image_block #artspan_pull_quote_text {
+    top: 55%;
+    width: 65%;
+    left: 15%;
+  }
+
+  /**
+    * SOCIAL MEDIA
+    **************
+    */
+  /* line 141, ../sass/responsive/_small.scss */
+  #social-media #block-instagram-block-instagram-block {
+    width: 80%;
+    margin: 0 auto;
+  }
+  /* line 145, ../sass/responsive/_small.scss */
+  #social-media img.instagram-images {
+    width: 11em;
+    height: 11em;
+  }
+}
+/**
+  * @file
+  * Media query for medium-min - these are options that will persist in large sizes
+  * Medium-min marks the change from handheld to tablets
+  * Some elements on teh page start to share space rather than being a single column
+  * The home page is one of the pages where a lot of these changes are made in medium-min
+  * We use min so that we do not have to repeat this stuff in large breakpoint
+  * files
+  */
+@media (min-width: 768px) {
+  /**
+    * HOME PAGE
+    ***********
+    */
+  /* line 21, ../sass/responsive/_medium-min.scss */
+  .homepage #block-views-events-featured-event h2.block-title {
+    color: #26aee8;
+    margin: 0 auto;
+    width: 75%;
+  }
+  /* line 27, ../sass/responsive/_medium-min.scss */
+  .homepage #block-views-events-featured-event .mainfeaturedevent .featured-event-body p {
+    text-align: left;
+  }
+  /* line 40, ../sass/responsive/_medium-min.scss */
+  .homepage .view-display-id-featured_events_secondary {
+    position: relative;
+    top: -4em;
+  }
+  /* line 44, ../sass/responsive/_medium-min.scss */
+  .homepage .view-display-id-featured_events_secondary .view-content {
+    padding: 3em 1em 0.3em 2em;
+  }
+  /* line 48, ../sass/responsive/_medium-min.scss */
+  .homepage .view-display-id-featured_events_secondary .views-row-1,
+  .homepage .view-display-id-featured_events_secondary .views-row-2,
+  .homepage .view-display-id-featured_events_secondary .views-row-3,
+  .homepage .view-display-id-featured_events_secondary .views-row-4 {
+    padding-left: 0.35em;
+    min-height: 20em;
+  }
+  /* line 56, ../sass/responsive/_medium-min.scss */
+  .homepage .view-display-id-featured_events_secondary .views-row-1,
+  .homepage .view-display-id-featured_events_secondary .views-row-2,
+  .homepage .view-display-id-featured_events_secondary .views-row-3 {
+    border-right: 1px solid #cfd9d6;
+    padding-right: .25em;
+  }
+  /* line 65, ../sass/responsive/_medium-min.scss */
+  .homepage #colored-bar {
+    margin-bottom: 2em;
+    margin-top: -2em;
+    width: 100%;
+  }
+  /* line 72, ../sass/responsive/_medium-min.scss */
+  .homepage #members .circle-text {
+    left: 7em;
+  }
+}
+/**
+  * @file
+  * Media query for medium breakpoint
+  * Font-sizes and line-heights are added to this file and anything else
+  * that must change at a breakpoint
+  */
+@media (min-width: 768px) and (max-width: 1004px) {
+  /*
+    // colors for breakpoints - just for development
+    #social-media {
+      background-color: red;
+    }
+    #site-slogan {
+      color: red;
+    }
+  */
+  /**
+    * TYPOGRAPHY
+    ************
+    */
+  /*--------------*
+   * $HEADINGS    *
+   * ------------*/
+  /* line 52, ../sass/responsive/_medium.scss */
+  h1 {
+    font-size: 25.5px;
+    line-height: 35.7px;
+  }
+
+  /* line 57, ../sass/responsive/_medium.scss */
+  h2 {
+    font-size: 27px;
+    line-height: 37.8px;
+  }
+
+  /* line 62, ../sass/responsive/_medium.scss */
+  h3 {
+    font-size: 19.5px;
+    line-height: 27.3px;
+  }
+
+  /* line 67, ../sass/responsive/_medium.scss */
+  h4 {
+    font-size: 16.5px;
+    line-height: 23.1px;
+  }
+
+  /* line 72, ../sass/responsive/_medium.scss */
+  h5 {
+    font-size: 15px;
+    line-height: 21px;
+  }
+
+  /* line 77, ../sass/responsive/_medium.scss */
+  #social-media .block-title {
+    font-size: 24.375px;
+  }
+
+  /* line 81, ../sass/responsive/_medium.scss */
+  #footer-bar a {
+    font-size: 15px;
+    line-height: 21px;
+  }
+
+  /* line 86, ../sass/responsive/_medium.scss */
+  html {
+    font-size: 15px;
+  }
+
+  /**
+  * HOMEPAGE
+  **********
+  */
+  /* line 96, ../sass/responsive/_medium.scss */
+  .homepage #site-slogan .title {
+    font-size: 36.75px;
+    line-height: 51.45px;
+    top: 48%;
+  }
+  /* line 101, ../sass/responsive/_medium.scss */
+  .homepage #site-slogan .subtitle {
+    font-size: 16.5px;
+    line-height: 23.1px;
+    top: 59%;
+  }
+  /* line 107, ../sass/responsive/_medium.scss */
+  .homepage #site-slogan .button-wrapper {
+    top: 67%;
+  }
+  /* line 112, ../sass/responsive/_medium.scss */
+  .homepage #block-views-events-featured-event .mainfeaturedevent .featured-event-date span {
+    white-space: normal;
+  }
+  /* line 117, ../sass/responsive/_medium.scss */
+  .homepage #members .circle-text {
+    left: 11em;
+  }
+
+  /**
+* ARTIST PROFILE PAGE
+*/
+  /* line 128, ../sass/responsive/_medium.scss */
+  .artist-profile-page #artspan_profile_image_block #artspan_pull_quote_text {
+    top: 55%;
+    width: 65%;
+    left: 15%;
+  }
+
+  /** SOCIAL MEDIA    
+   **************
+   */
+  /* line 143, ../sass/responsive/_medium.scss */
+  #artspan_profile_image_block #artspan_pull_quote_text {
+    top: 13.5em;
+    right: 0.75em;
+    color: pink;
+    width: 46%;
+  }
+
+  /** SOCIAL MEDIA    
+    **************
+    */
+  /* line 156, ../sass/responsive/_medium.scss */
+  #social-media #block-instagram-block-instagram-block {
+    width: 70%;
+    margin: 0 auto;
+  }
+  /* line 160, ../sass/responsive/_medium.scss */
+  #social-media img.instagram-images {
+    width: 11em;
+    height: 11em;
+  }
+
+  /* line 168, ../sass/responsive/_medium.scss */
+  #block-block-12 input {
+    font-size: 13.125px;
+  }
+}
+/**
+  * @file
+  * Media query for large-min - these are options that will persist in large sizes
+  * Large-min marks the change from handheld devices to laptops/desktops
+  * Menu is moved to the top and footer is added; small device menus are 
+  * no longer displayed
+  * We use min so that we do not have to repeat this stuff in large breakpoint
+  * files
+  */
+@media (min-width: 1005px) {
+  /**
+    * NICE MENUS
+    ************
+    */
+  /******************************
+   Global CSS for ALL menu types
+  ******************************/
+  /* line 21, ../sass/responsive/_large-min.scss */
+  ul.nice-menu,
+  ul.nice-menu ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  /* line 28, ../sass/responsive/_large-min.scss */
+  ul.nice-menu li {
+    float: left;
+  }
+
+  /* line 32, ../sass/responsive/_large-min.scss */
+  ul.nice-menu ul {
+    top: 1.8em;
+    left: -1px;
+    margin-right: 0;
+  }
+
+  /* line 40, ../sass/responsive/_large-min.scss */
+  #block-nice-menus-1 {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    background: none;
+  }
+  /* line 46, ../sass/responsive/_large-min.scss */
+  #block-nice-menus-1 .block-title {
+    display: none;
+  }
+  /* line 50, ../sass/responsive/_large-min.scss */
+  #block-nice-menus-1 li {
+    display: inline;
+  }
+  /* line 54, ../sass/responsive/_large-min.scss */
+  #block-nice-menus-1 li a {
+    float: left;
+    border: none;
+    padding: 0 10px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+  }
+
+  /******************************
+   NICE HORIZONTAL (down) menus
+  ******************************/
+  /* line 68, ../sass/responsive/_large-min.scss */
+  ul.nice-menu-down {
+    float: left;
+    white-space: nowrap;
+  }
+
+  /* line 73, ../sass/responsive/_large-min.scss */
+  ul.nice-menu-down ul {
+    left: 0;
+    /* LTR */
+  }
+
+  /* line 77, ../sass/responsive/_large-min.scss */
+  ul.nice-menu-down ul li {
+    clear: both;
+  }
+
+  /* line 81, ../sass/responsive/_large-min.scss */
+  ul.nice-menu-down li ul li ul {
+    left: 18em;
+    top: -1px;
+  }
+
+  /* line 86, ../sass/responsive/_large-min.scss */
+  ul.nice-menu-down .menuparent a {
+    padding-right: 15px;
+    /* LTR */
+  }
+
+  /**
+    * GLOBAL MENUS
+    **************
+    */
+  /* line 94, ../sass/responsive/_large-min.scss */
+  .menu__item.is-leaf,
+  .menu__item.is-collapsed,
+  .menu__item.is-expanded {
+    list-style-type: none;
+    list-style-image: none;
+  }
+
+  /* line 100, ../sass/responsive/_large-min.scss */
+  .navigation ul {
+    list-style: none;
+    background: #ffffff;
+    padding: 5px 0;
+  }
+
+  /* line 108, ../sass/responsive/_large-min.scss */
+  .main-navigation li a,
+  #sidebar-nav li a {
+    padding: 0 1em;
+    text-decoration: none;
+    font-family: "MontserratBold", sans-serif;
+    text-transform: uppercase;
+    line-height: 2em;
+    height: 2em;
+  }
+  /* line 117, ../sass/responsive/_large-min.scss */
+  .main-navigation li a:hover,
+  .main-navigation li a:focus,
+  #sidebar-nav li a:hover,
+  #sidebar-nav li a:focus {
+    color: #ffffff;
+    background: #26aee8;
+  }
+
+  /**
+    * HEADER
+    *********
+    */
+  /* Wrapping link for logo. */
+  /* line 133, ../sass/responsive/_large-min.scss */
+  .header__logo {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Logo image. */
+  /* line 139, ../sass/responsive/_large-min.scss */
+  .header__logo-image {
+    /* Suppress the space beneath the baseline */
+    vertical-align: bottom;
+  }
+
+  /**
+    * MAIN MENU
+    ***********
+    */
+  /* line 149, ../sass/responsive/_large-min.scss */
+  a#to-main-menu {
+    display: none;
+  }
+
+  /* line 154, ../sass/responsive/_large-min.scss */
+  #main-menu-wrapper {
+    display: block;
+  }
+
+  /* line 159, ../sass/responsive/_large-min.scss */
+  #main-menu ul.nice-menu a {
+    color: #768c90;
+  }
+  /* line 163, ../sass/responsive/_large-min.scss */
+  #main-menu ul.nice-menu a:active,
+  #main-menu ul.nice-menu a:hover {
+    color: #384345;
+  }
+  /* line 168, ../sass/responsive/_large-min.scss */
+  #main-menu ul.nice-menu ul li {
+    background: #26aee8;
+  }
+  /* line 173, ../sass/responsive/_large-min.scss */
+  #main-menu ul.nice-menu ul li a {
+    color: #ffffff;
+    width: 19em;
+  }
+
+  /**
+    * ASIDE
+    *******
+    */
+  /* line 194, ../sass/responsive/_large-min.scss */
+  #u-r-here-nav {
+    margin: 0 auto;
+    width: 80%;
+  }
+  /* line 198, ../sass/responsive/_large-min.scss */
+  #u-r-here-nav h1#page-title {
+    margin-left: 0.5em;
+  }
+
+  /* line 203, ../sass/responsive/_large-min.scss */
+  #sidebar-nav {
+    color: #26aee8;
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+  }
+  /* line 210, ../sass/responsive/_large-min.scss */
+  #sidebar-nav h2.block-title {
+    display: none;
+  }
+  /* line 216, ../sass/responsive/_large-min.scss */
+  #sidebar-nav li {
+    border-bottom: 1px solid #cfd9d6;
+  }
+  /* line 220, ../sass/responsive/_large-min.scss */
+  #sidebar-nav li:last-child {
+    border-bottom: none;
+  }
+  /* line 225, ../sass/responsive/_large-min.scss */
+  #sidebar-nav ul.menu ul li {
+    margin-left: 1.4em;
+  }
+
+  /**
+    * HOME PAGE
+    ***********
+    */
+  /* line 236, ../sass/responsive/_large-min.scss */
+  .homepage #block-views-events-featured-event .featured-event-body p {
+    text-align: left;
+  }
+  /* line 239, ../sass/responsive/_large-min.scss */
+  .homepage #block-views-events-featured-event .mainfeaturedevent .featured-event-date span {
+    white-space: nowrap;
+  }
+
+  /** SOCIAL MEDIA    
+    **************
+    */
+  /* line 251, ../sass/responsive/_large-min.scss */
+  #social-media {
+    overflow: hidden;
+  }
+  /* line 254, ../sass/responsive/_large-min.scss */
+  #social-media .block {
+    margin-bottom: 0;
+  }
+  /* line 258, ../sass/responsive/_large-min.scss */
+  #social-media #block-block-12,
+  #social-media #block-instagram-block-instagram-block,
+  #social-media #block-twitter-block-1 {
+    padding: 0;
+  }
+  /* line 264, ../sass/responsive/_large-min.scss */
+  #social-media h2.block-title {
+    text-align: left;
+  }
+  /* line 268, ../sass/responsive/_large-min.scss */
+  #social-media #block-block-12 {
+    position: relative;
+    min-height: 25em;
+  }
+  /* line 276, ../sass/responsive/_large-min.scss */
+  #social-media #block-block-12 #newsletter-signup-block {
+    position: absolute;
+    top: 3em;
+    left: 3em;
+  }
+  /* line 282, ../sass/responsive/_large-min.scss */
+  #social-media #block-block-12 h2.block-title {
+    color: #ffffff;
+    margin: 0 0 0.6em;
+    word-wrap: normal;
+    width: 50%;
+  }
+  /* line 289, ../sass/responsive/_large-min.scss */
+  #social-media #block-block-12 .email-label {
+    color: #ffffff;
+    line-height: 2.1em;
+    font-family: "RalewayBold", sans-serif;
+    letter-spacing: .075em;
+    text-align: left;
+  }
+  /* line 297, ../sass/responsive/_large-min.scss */
+  #social-media #block-block-12 input {
+    border: none;
+  }
+  /* line 304, ../sass/responsive/_large-min.scss */
+  #social-media #block-instagram-block-instagram-block {
+    margin: 0;
+  }
+  /* line 310, ../sass/responsive/_large-min.scss */
+  #social-media #block-instagram-block-instagram-block h2.block-title {
+    margin: 2em 0 0.5em 1.2em;
+    word-wrap: normal;
+    width: 50%;
+  }
+  /* line 316, ../sass/responsive/_large-min.scss */
+  #social-media #block-instagram-block-instagram-block input.submit-button {
+    margin-top: 1em;
+  }
+  /* line 322, ../sass/responsive/_large-min.scss */
+  #social-media #block-twitter-block-1 {
+    margin-top: 1.4em;
+  }
+  /* line 328, ../sass/responsive/_large-min.scss */
+  #social-media #block-twitter-block-1 h2.block-title {
+    margin: 0.8em 0 0 0.25em;
+    word-wrap: normal;
+    width: 50%;
+  }
+
+  /**
+    * FOOTER MENU
+    *************
+    */
+  /* line 341, ../sass/responsive/_large-min.scss */
+  #footer-section #footer-logo {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+  }
+
+  /* line 349, ../sass/responsive/_large-min.scss */
+  #footer-menu #navigation-footer #block-menu-menu-menu-footer-menu li {
+    display: inline;
+  }
+  /* line 354, ../sass/responsive/_large-min.scss */
+  #footer-menu #navigation-footer #block-system-main-menu {
+    display: none;
+  }
+
+  /* line 359, ../sass/responsive/_large-min.scss */
+  #block-menu-menu-menu-footer-menu {
+    padding-top: 2.5em;
+  }
+  /* line 362, ../sass/responsive/_large-min.scss */
+  #block-menu-menu-menu-footer-menu .block-title {
+    display: none;
+  }
+  /* line 366, ../sass/responsive/_large-min.scss */
+  #block-menu-menu-menu-footer-menu li a {
+    padding: 0.4em;
+    color: #768c90;
+  }
+
+  /* line 373, ../sass/responsive/_large-min.scss */
+  #footer-menu #badge-nav {
+    margin-top: 2.2em;
+  }
+
+  /**
+    * LEGALESE
+    **********
+    */
+  /* line 383, ../sass/responsive/_large-min.scss */
+  #footer-bar a {
+    margin: 0 0.5em 0.4em;
+  }
+  /* line 389, ../sass/responsive/_large-min.scss */
+  #footer-bar #block-menu-menu-legalese-menu ul {
+    list-style: outside none none;
+  }
+  /* line 393, ../sass/responsive/_large-min.scss */
+  #footer-bar #block-menu-menu-legalese-menu li {
+    display: inline;
+  }
+
+  /**
+    * TO TOP
+    ********
+    */
+  /* line 403, ../sass/responsive/_large-min.scss */
+  #footer-section #to-page-top {
+    display: none;
+  }
+}
+/**
+  * @file
+  * Media query for large breakpoint
+  * Font-sizes and line-heights are added to this file and anything else
+  * that must change at a breakpoint  
+  */
+@media (min-width: 1005px) and (max-width: 1144px) {
+  /*
+    // colors for breakpoints - just for development
+    #social-media {
+      background-color: yellow;
+    }
+    #site-slogan {
+      color: yellow;
+    }
+  */
+  /**
+    * TYPOGRAPHY
+    ************
+    */
+  /*--------------*
+   * $HEADINGS    *
+   * ------------*/
+  /* line 54, ../sass/responsive/_large.scss */
+  h1 {
+    font-size: 23.8px;
+    line-height: 33.32px;
+  }
+
+  /* line 59, ../sass/responsive/_large.scss */
+  h2 {
+    font-size: 25.2px;
+    line-height: 35.28px;
+  }
+
+  /* line 64, ../sass/responsive/_large.scss */
+  h3 {
+    font-size: 18.2px;
+    line-height: 25.48px;
+  }
+
+  /* line 69, ../sass/responsive/_large.scss */
+  h4 {
+    font-size: 15.4px;
+    line-height: 21.56px;
+  }
+
+  /* line 74, ../sass/responsive/_large.scss */
+  h5 {
+    font-size: 14px;
+    line-height: 19.6px;
+  }
+
+  /* line 79, ../sass/responsive/_large.scss */
+  html {
+    font-size: 14px;
+  }
+
+  /**
+    * MAIN MENU
+    ***********
+    */
+  /* line 87, ../sass/responsive/_large.scss */
+  .main-navigation li a {
+    font-size: 15.4px;
+  }
+
+  /**
+    * ASIDE
+    ********
+    */
+  /* line 98, ../sass/responsive/_large.scss */
+  #sidebar-nav li a {
+    font-size: 15.4px;
+  }
+  /* line 102, ../sass/responsive/_large.scss */
+  #sidebar-nav ul.menu ul li a {
+    font-size: 14px;
+  }
+
+  /**
+  * UPCOMING EVENTS
+  *****************
+  */
+  /* line 113, ../sass/responsive/_large.scss */
+  .upcoming-events .views-row .event-title {
+    min-height: 4em;
+  }
+
+  /**
+  * HOMEPAGE
+  **********
+  */
+  /* line 125, ../sass/responsive/_large.scss */
+  .homepage #site-slogan .title {
+    font-size: 48.3px;
+    line-height: 67.62px;
+    top: 48%;
+  }
+  /* line 130, ../sass/responsive/_large.scss */
+  .homepage #site-slogan .subtitle {
+    font-size: 15.4px;
+    line-height: 21.56px;
+    top: 59%;
+  }
+  /* line 136, ../sass/responsive/_large.scss */
+  .homepage #site-slogan .button-wrapper {
+    top: 67%;
+  }
+  /* line 144, ../sass/responsive/_large.scss */
+  .homepage #homepage-features .block {
+    padding-bottom: 0em;
+  }
+  /* line 150, ../sass/responsive/_large.scss */
+  .homepage .featured-event-body span {
+    font-size: 14px !important;
+  }
+  /* line 156, ../sass/responsive/_large.scss */
+  .homepage #members .circle-text {
+    left: 11em;
+  }
+
+  /**
+    * ARTIST PROFILE PAGE
+    */
+  /* line 169, ../sass/responsive/_large.scss */
+  .artist-profile-page #artspan_profile_image_block #artspan_pull_quote_text {
+    font-size: 20.3px;
+    line-height: 28.42px;
+    top: 35%;
+    right: 0;
+    left: 50%;
+    width: 46%;
+  }
+  /* line 178, ../sass/responsive/_large.scss */
+  .artist-profile-page #artspan_profile_image_block #artspan_pull_quote_text:before {
+    font-size: 51.8px;
+    line-height: 72.52px;
+  }
+
+  /**
+    * SOCIAL MEDIA
+    **************
+    */
+  /* line 194, ../sass/responsive/_large.scss */
+  #social-media .block-title {
+    font-size: 15.4px;
+  }
+  /* line 198, ../sass/responsive/_large.scss */
+  #social-media img.instagram-images {
+    width: 7em;
+    height: 7em;
+  }
+
+  /**
+    * FOOTER BAR
+    **************
+    */
+  /* line 209, ../sass/responsive/_large.scss */
+  #footer-bar a {
+    font-size: 14px;
+    line-height: 19.6px;
+  }
+}
+/**
+  * @file
+  * Media query for x-large breakpoint
+  * Font-sizes and line-heights are added to this file and anything else
+  * that must change at a breakpoint  
+  */
+@media (min-width: 1145px) and (max-width: 1234px) {
+  /*
+    // colors for breakpoints - just for development
+    #social-media {
+      background-color: purple;
+    }
+    #site-slogan {
+      color: purple;
+    }
+  */
+  /**
+    * TYPOGRAPHY
+    ************
+    */
+  /*--------------*
+   * $HEADINGS    *
+   * ------------*/
+  /* line 53, ../sass/responsive/_xlarge.scss */
+  h1 {
+    font-size: 25.5px;
+    line-height: 35.7px;
+  }
+
+  /* line 58, ../sass/responsive/_xlarge.scss */
+  h2 {
+    font-size: 27px;
+    line-height: 37.8px;
+  }
+
+  /* line 63, ../sass/responsive/_xlarge.scss */
+  h3 {
+    font-size: 19.5px;
+    line-height: 27.3px;
+  }
+
+  /* line 68, ../sass/responsive/_xlarge.scss */
+  h4 {
+    font-size: 16.5px;
+    line-height: 23.1px;
+  }
+
+  /* line 73, ../sass/responsive/_xlarge.scss */
+  h5 {
+    font-size: 15px;
+    line-height: 21px;
+  }
+
+  /* line 78, ../sass/responsive/_xlarge.scss */
+  html {
+    font-size: 15px;
+  }
+
+  /**
+    * MAIN MENU
+    ***********
+    */
+  /* line 86, ../sass/responsive/_xlarge.scss */
+  .main-navigation li a {
+    letter-spacing: 0.1em;
+    font-size: 16.5px;
+  }
+
+  /**
+    * ASIDE
+    ********
+    */
+  /* line 98, ../sass/responsive/_xlarge.scss */
+  #sidebar-nav li a {
+    font-size: 16.5px;
+  }
+  /* line 102, ../sass/responsive/_xlarge.scss */
+  #sidebar-nav ul.menu ul li a {
+    font-size: 15px;
+  }
+
+ /**
+* HOMEPAGE
+**********
+*/
+  /* line 113, ../sass/responsive/_xlarge.scss */
+  .homepage #site-slogan .title {
+    font-size: 51.75px;
+    line-height: 72.45px;
+    top: 48%;
+  }
+  /* line 118, ../sass/responsive/_xlarge.scss */
+  .homepage #site-slogan .subtitle {
+    font-size: 16.5px;
+    line-height: 23.1px;
+    top: 59%;
+  }
+  /* line 124, ../sass/responsive/_xlarge.scss */
+  .homepage #site-slogan .button-wrapper {
+    top: 67%;
+  }
+  /* line 130, ../sass/responsive/_xlarge.scss */
+  .homepage .featured-event-body span {
+    font-size: 15px !important;
+  }
+  /* line 135, ../sass/responsive/_xlarge.scss */
+  .homepage #members .circle-text {
+    left: 11em;
+  }
+
+  /**
+    * ARTIST PROFILE PAGE
+    */
+  /* line 148, ../sass/responsive/_xlarge.scss */
+  .artist-profile-page #artspan_profile_image_block #artspan_pull_quote_text {
+    font-size: 21.75px;
+    line-height: 30.45px;
+    top: 35%;
+    right: 0;
+    left: 52%;
+    width: 46%;
+  }
+  /* line 157, ../sass/responsive/_xlarge.scss */
+  .artist-profile-page #artspan_profile_image_block #artspan_pull_quote_text:before {
+    font-size: 55.5px;
+    line-height: 77.7px;
+  }
+
+  /**
+    * SOCIAL MEDIA
+    **************
+    */
+  /* line 173, ../sass/responsive/_xlarge.scss */
+  #social-media .block-title {
+    font-size: 16.5px;
+  }
+  /* line 177, ../sass/responsive/_xlarge.scss */
+  #social-media img.instagram-images {
+    width: 8em;
+    height: 8em;
+  }
+
+  /**
+    * FOOTER BAR
+    **************
+    */
+  /* line 188, ../sass/responsive/_xlarge.scss */
+  #footer-bar a {
+    font-size: 15px;
+    line-height: 21px;
+  }
+}
+/**
+  * @file
+  * Media query for xx-large breakpoint
+  * Font-sizes and line-heights are added to this file and anything else
+  * that must change at a breakpoint  
+  */
+@media (min-width: 1234px) and (max-width: 1532px) {
+  /*
+    // colors for breakpoints - just for development
+    #social-media {
+      background-color: orange;
+    }
+    #site-slogan {
+      color: orange;
+    }
+  */
+  /**
+    * TYPOGRAPHY
+    ************
+    */
+  /*--------------*
+   * $HEADINGS    *
+   * ------------*/
+  /* line 53, ../sass/responsive/_xxlarge.scss */
+  h1 {
+    font-size: 27.2px;
+    line-height: 38.08px;
+  }
+
+  /* line 58, ../sass/responsive/_xxlarge.scss */
+  h2 {
+    font-size: 28.8px;
+    line-height: 40.32px;
+  }
+
+  /* line 63, ../sass/responsive/_xxlarge.scss */
+  h3 {
+    font-size: 20.8px;
+    line-height: 29.12px;
+  }
+
+  /* line 68, ../sass/responsive/_xxlarge.scss */
+  h4 {
+    font-size: 17.6px;
+    line-height: 24.64px;
+  }
+
+  /* line 73, ../sass/responsive/_xxlarge.scss */
+  h5 {
+    font-size: 16px;
+    line-height: 22.4px;
+  }
+
+  /* line 78, ../sass/responsive/_xxlarge.scss */
+  html {
+    font-size: 16px;
+  }
+
+  /**
+    * MAIN MENU
+    ***********
+    */
+  /* line 86, ../sass/responsive/_xxlarge.scss */
+  .main-navigation li a {
+    letter-spacing: 0.1em;
+    font-size: 17.6px;
+  }
+
+  /**
+    * ASIDE
+    ********
+    */
+  /* line 96, ../sass/responsive/_xxlarge.scss */
+  #sidebar-nav li a {
+    font-size: 17.6px;
+  }
+  /* line 100, ../sass/responsive/_xxlarge.scss */
+  #sidebar-nav ul.menu ul li a {
+    font-size: 16px;
+  }
+
+  /**
+  * HOMEPAGE
+  **********
+  */
+  /* line 111, ../sass/responsive/_xxlarge.scss */
+  .homepage #site-slogan .title {
+    font-size: 55.2px;
+    line-height: 77.28px;
+    top: 48%;
+  }
+  /* line 116, ../sass/responsive/_xxlarge.scss */
+  .homepage #site-slogan .subtitle {
+    font-size: 17.6px;
+    line-height: 24.64px;
+    top: 59%;
+  }
+  /* line 122, ../sass/responsive/_xxlarge.scss */
+  .homepage #site-slogan .button-wrapper {
+    top: 67%;
+  }
+  /* line 128, ../sass/responsive/_xxlarge.scss */
+  .homepage .featured-event-body span {
+    font-size: 16px !important;
+  }
+  /* line 134, ../sass/responsive/_xxlarge.scss */
+  .homepage .view-display-id-featured_events_secondary .views-row-1,
+  .homepage .view-display-id-featured_events_secondary .views-row-2,
+  .homepage .view-display-id-featured_events_secondary .views-row-3,
+  .homepage .view-display-id-featured_events_secondary .views-row-4 {
+    min-height: 16em;
+  }
+  /* line 143, ../sass/responsive/_xxlarge.scss */
+  .homepage #members .circle-text {
+    left: 11em;
+  }
+
+  /**
+    * ARTIST PROFILE PAGE
+    */
+  /* line 156, ../sass/responsive/_xxlarge.scss */
+  .artist-profile-page #artspan_profile_image_block #artspan_pull_quote_text {
+    font-size: 23.2px;
+    line-height: 32.48px;
+    top: 36%;
+    right: 0;
+    left: 50%;
+    width: 44%;
+  }
+  /* line 165, ../sass/responsive/_xxlarge.scss */
+  .artist-profile-page #artspan_profile_image_block #artspan_pull_quote_text:before {
+    font-size: 59.2px;
+    line-height: 82.88px;
+  }
+
+  /**
+    * SOCIAL MEDIA
+    **************
+    */
+  /* line 178, ../sass/responsive/_xxlarge.scss */
+  #social-media .block-title {
+    font-size: 20.8px;
+  }
+  /* line 182, ../sass/responsive/_xxlarge.scss */
+  #social-media img.instagram-images {
+    width: 8em;
+    height: 8em;
+  }
+
+  /* line 191, ../sass/responsive/_xxlarge.scss */
+  #block-block-12 input {
+    font-size: 14px;
+  }
+
+  /**
+    * FOOTER BAR
+    **************
+    */
+  /* line 199, ../sass/responsive/_xxlarge.scss */
+  #footer-bar a {
+    font-size: 16px;
+    line-height: 22.4px;
+  }
+}
+/**
+  * @file
+  * Media query for xxx-large breakpoint
+  * Font-sizes and line-heights are added to this file and anything else
+  * that must change at a breakpoint  
+  */
+@media (min-width: 1533px) {
+  /*
+    // colors for breakpoints - just for development
+    #social-media {
+      background-color: green;
+    }
+    #site-slogan {
+      color: green;
+    }
+  */
+  /**
+    * TYPOGRAPHY
+    ************
+    */
+  /*--------------*
+   * $HEADINGS    *
+   * ------------*/
+  /* line 53, ../sass/responsive/_xxxlarge.scss */
+  h1 {
+    font-size: 30.6px;
+    line-height: 42.84px;
+  }
+
+  /* line 58, ../sass/responsive/_xxxlarge.scss */
+  h2 {
+    font-size: 32.4px;
+    line-height: 45.36px;
+  }
+
+  /* line 63, ../sass/responsive/_xxxlarge.scss */
+  h3 {
+    font-size: 23.4px;
+    line-height: 32.76px;
+  }
+
+  /* line 68, ../sass/responsive/_xxxlarge.scss */
+  h4 {
+    font-size: 19.8px;
+    line-height: 27.72px;
+  }
+
+  /* line 73, ../sass/responsive/_xxxlarge.scss */
+  h5 {
+    font-size: 18px;
+    line-height: 25.2px;
+  }
+
+  /* line 78, ../sass/responsive/_xxxlarge.scss */
+  html {
+    font-size: 18px;
+  }
+
+  /**
+    * MAIN MENU
+    ***********
+    */
+  /* line 86, ../sass/responsive/_xxxlarge.scss */
+  .main-navigation li a {
+    letter-spacing: 0.1em;
+    font-size: 19.8px;
+  }
+
+  /**
+    * ASIDE
+    ********
+    */
+  /* line 96, ../sass/responsive/_xxxlarge.scss */
+  #sidebar-nav li a {
+    font-size: 19.8px;
+  }
+  /* line 100, ../sass/responsive/_xxxlarge.scss */
+  #sidebar-nav ul.menu ul li a {
+    font-size: 18px;
+  }
+
+  /**
+  * HOMEPAGE
+  **********
+  */
+  /* line 111, ../sass/responsive/_xxxlarge.scss */
+  .homepage #site-slogan .title {
+    font-size: 62.1px;
+    line-height: 86.94px;
+    top: 47%;
+  }
+  /* line 116, ../sass/responsive/_xxxlarge.scss */
+  .homepage #site-slogan .subtitle {
+    font-size: 19.8px;
+    line-height: 27.72px;
+    top: 60%;
+  }
+  /* line 122, ../sass/responsive/_xxxlarge.scss */
+  .homepage #site-slogan .button-wrapper {
+    top: 66%;
+  }
+  /* line 128, ../sass/responsive/_xxxlarge.scss */
+  .homepage .featured-event-body span {
+    font-size: 18px !important;
+  }
+  /* line 134, ../sass/responsive/_xxxlarge.scss */
+  .homepage .view-display-id-featured_events_secondary .views-row-1,
+  .homepage .view-display-id-featured_events_secondary .views-row-2,
+  .homepage .view-display-id-featured_events_secondary .views-row-3,
+  .homepage .view-display-id-featured_events_secondary .views-row-4 {
+    min-height: 16em;
+  }
+  /* line 143, ../sass/responsive/_xxxlarge.scss */
+  .homepage #members .circle-text {
+    left: 11em;
+  }
+
+  /**
+    * ARTIST PROFILE PAGE
+    */
+  /* line 156, ../sass/responsive/_xxxlarge.scss */
+  .artist-profile-page #artspan_profile_image_block #artspan_pull_quote_text {
+    font-size: 24.3px;
+    line-height: 34.02px;
+    top: 37%;
+    right: 0;
+    left: 52%;
+    width: 44%;
+  }
+  /* line 165, ../sass/responsive/_xxxlarge.scss */
+  .artist-profile-page #artspan_profile_image_block #artspan_pull_quote_text:before {
+    font-size: 66.6px;
+    line-height: 93.24px;
+  }
+
+  /**
+    * SOCIAL MEDIA
+    **************
+    */
+  /* line 179, ../sass/responsive/_xxxlarge.scss */
+  #social-media .block-title {
+    font-size: 23.4px;
+  }
+  /* line 183, ../sass/responsive/_xxxlarge.scss */
+  #social-media img.instagram-images {
+    width: 9em;
+    height: 9em;
+  }
+
+  /* line 192, ../sass/responsive/_xxxlarge.scss */
+  #block-block-12 input {
+    font-size: 15.75px;
+  }
+
+  /**
+    * FOOTER BAR
+    **************
+    */
+  /* line 200, ../sass/responsive/_xxxlarge.scss */
+  #footer-bar a {
+    font-size: 18px;
+    line-height: 25.2px;
+  }
+}
+/* SMACSS theme rules */
+/* @import "theme-A"; */
+/* @import "theme-B"; */
+
+/* Civi Vol Styles */
+#crm-container .crm-vol-project-submit-buttons .crm-button,
+#crm-container .crm-vol-preview-description.crm-button,
+.crm-vol-buttons .crm-container a.button,
+.crm-vol-buttons .crm-container a.button:link {
+  background: #70716B url(/sites/all/modules/contrib/civicrm/i/crm-button-bg.gif) repeat-x top left;
+  margin: 0 6px 0 0;
+  padding: 2px 6px;
+  display: inline;
+}

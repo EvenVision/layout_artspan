@@ -1,0 +1,79 @@
+/**
+  * @file
+  * Media query for medium-min - these are options that will persist in large sizes
+  * Medium-min marks the change from handheld to tablets
+  * Some elements on teh page start to share space rather than being a single column
+  * The home page is one of the pages where a lot of these changes are made in medium-min
+  * We use min so that we do not have to repeat this stuff in large breakpoint
+  * files
+  */
+
+@include breakpoint($medium-min) {
+
+/**
+  * HOME PAGE
+  ***********
+  */
+  .homepage {
+
+         //featured event 
+    #block-views-events-featured-event {
+      h2.block-title {
+        color: $link-color;
+        margin: 0 auto;
+        width: 75%;
+      }    
+      .mainfeaturedevent {
+        .featured-event-body p {
+          text-align: left;
+        }
+        
+        .button-wrapper {
+          .submit-button {
+            
+          }
+        }
+      }  
+    }
+    
+  // events posted four  
+    .view-display-id-featured_events_secondary {
+      position: relative; // reposition div from natural layout for larger devices
+      top: -4em;
+      
+      .view-content {
+        padding: 3em 1em 0.3em 2em; 
+      }
+      
+      .views-row-1,
+      .views-row-2,
+      .views-row-3,
+      .views-row-4 {
+        padding-left: 0.35em;
+        min-height: 20em;   // this can be shortened if they are willing to use shorter titles
+      }
+      
+      .views-row-1,
+      .views-row-2,
+      .views-row-3 {
+        border-right: 1px solid $lightgray;
+        padding-right: .25em;
+      }      
+    
+    } //events posted
+
+    #colored-bar {
+      margin-bottom: 2em;
+      margin-top: -2em;
+    }
+
+    #members {
+    
+      .circle-text {
+        left: 7em;
+      }  
+    }
+  
+  } //homepage
+  
+} //medium-min

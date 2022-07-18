@@ -1,0 +1,77 @@
+// @file
+// Custom sass mixins
+//
+// Define the custom mixins for your project here.
+// http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#defining_a_mixin
+
+// Box-sizing
+// Custom box-sizing mixin added because the Compass version throws a deprecation error
+// See - http://stackoverflow.com/questions/28098462/deprecation-warning-passing-null-a-non-string-value-to-unquote
+// and - https://github.com/ericam/susy/issues/425
+@mixin box-sizing($value) {
+    -moz-box-sizing: $value;
+         box-sizing: $value;
+}
+
+//-----------------
+// FONTS
+//-----------------
+
+// mixin for bullet proof font declaration syntax
+// http://pivotallabs.com/bulletproof-font-face-syntax-with-sass/
+//
+@mixin declare-font-face($font-family, $font-file-path, $font-weight : normal, $font-style :normal, $font-stretch : normal) {
+  @font-face {
+    font-family: '#{$font-family}';
+    src: url('#{$font-file-path}.eot');
+    src: url('#{$font-file-path}.eot?#iefix') format('embedded-opentype'),
+    url('#{$font-file-path}.woff') format('woff'),
+    url('#{$font-file-path}.ttf') format('truetype'),
+    url('#{$font-file-path}.svg##{$font-family}') format('svg');
+    font-weight: $font-weight;
+    font-style: $font-style;
+    font-stretch: $font-stretch;
+  }
+}
+
+//--------------------
+// SHAPES
+//--------------------
+@mixin circle($width, $color) {
+  width: $width;
+  height: $width;
+  background: $color;
+  -webkit-border-radius: $width/2;
+     -moz-border-radius: $width/2;
+          border-radius: $width/2;
+}
+
+// Makes an element visually hidden, but accessible.
+// @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin element-invisible {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// Turns off the element-invisible effect.
+@mixin element-invisible-off {
+  position: static !important;
+  clip: auto;
+  height: auto;
+  width: auto;
+  overflow: auto;
+}
+
+// Makes an element visually hidden by default, but visible when focused.
+@mixin element-focusable {
+  @include element-invisible;
+
+  &:active,
+  &:focus {
+    @include element-invisible-off;
+  }
+}
+

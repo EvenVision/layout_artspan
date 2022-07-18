@@ -1,0 +1,161 @@
+//
+// Initialization partial
+//
+// To make it easier to use all variables and mixins in any Sass file in this
+// theme, each .scss file has a @import "init" declaration. And this _init.scss
+// file is in charge of importing all the other partials needed for the theme.
+//
+// This initialization partial is organized in this way:
+// - First we set any shared Sass variables.
+// - Next we import Compass plug-ins (Sass mixin libraries).
+// - Last we define our custom mixins for this theme.
+//
+
+
+// =============================================================================
+// Variables
+// =============================================================================
+// 
+// removed legacy variables
+//
+
+//
+// Breakpoints
+// min and max
+//
+
+$xx-small-min: 320px;      //min-width - @include breakpoint($xx-small-min){}
+$xx-small-max: 413px;      // max-width - @include breakpoint(max-width 900px) {}
+$xx-small: $xx-small-min $xx-small-max;  //iphone4-portrait
+
+$x-small-min: 414px;
+$x-small-max: 649px; 
+$x-small: $x-small-min $x-small-max;         //iphone6
+
+$small-min: 650px;
+$small-max: 767px; 
+$small: $small-min $small-max;         // iphone 6 landscape
+
+$medium-min: 768px;
+$medium-max: 1004px;
+$medium: $medium-min $medium-max;     //ipad2-portrait/tablet
+
+$large-min: 1005px;
+$large-max: 1144px;
+$large: $large-min $large-max;        //laptop1
+
+$x-large-min: 1145px;
+$x-large-max: 1234px; 
+$x-large: $x-large-min $x-large-max;  //laptop2
+
+$xx-large-min: 1234px;
+$xx-large-max: 1532px; 
+$xx-large: $xx-large-min $xx-large-max;  //laptop2
+
+$xxx-large-min: 1533px;                // desktop
+
+//
+// Font faces, stacks and sizes.
+//
+
+/*
+// First, let's create some font stacks.
+$times-new-roman: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
+$times:           Times, "Times New Roman", Georgia, "DejaVu Serif", serif;
+$georgia:         Georgia, "Times New Roman", "DejaVu Serif", serif;
+
+$verdana:         Verdana, Tahoma, "DejaVu Sans", sans-serif;
+$tahoma:          Tahoma, Verdana, "DejaVu Sans", sans-serif;
+$helvetica:       Helvetica, Arial, "Nimbus Sans L", sans-serif;
+arial:           Arial, Helvetica, "Nimbus Sans L", sans-serif;
+---*/
+
+// font stacks for this theme
+$georgia:         Georgia, "Times New Roman", "DejaVu Serif", serif;
+$montserrat-regular:  "MontserratRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+$montserrat-bold:     "MontserratBold", sans-serif;
+
+$raleway-regular:     "RalewayRegular", "Open Sans", "Nimbus Sans L", sans-serif;
+$raleway-black:       "RalewayBlack", sans-serif;
+$raleway-bold:        "RalewayBold", sans-serif;
+$raleway-semibold:    "RalewaySemiBold", sans-serif;
+$raleway-lightitalic: "RalewayLightItalic", sans-serif;
+
+// For an explanation of why "sans-serif" is at the end of this list, see
+// http://meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
+$courier:         "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
+
+// Now create some variables for the font stacks we want to use on this site.
+$base-font-family: $raleway-regular; // The font family set on the html element.
+$font-body:        $raleway-regular;
+$font-monospace:   $courier;
+
+//
+// Colors, etc.
+//
+// ArtSpan colors
+// descriptive color variables ---------
+$white:             #ffffff;
+$malibu-cyan:       #26aee8;
+$darkskyblue:       #10456d;
+$nile-darkblue:     #172f50;
+$lightgray:         #cfd9d6;
+$raincloudgray:     #768c90;
+$shalegray:         #384345;
+$black:             #000000;
+$magenta:           #d97bad;
+
+// functional text colors --------------
+$h1-color:                $nile-darkblue;
+$h2-color:                $nile-darkblue;
+$h3-color:                $malibu-cyan;
+$h4-color:                $nile-darkblue;
+$h5-color:                $malibu-cyan;
+$h6-color:                $shalegray;
+$p-color:                 $shalegray;
+$breadcrumb-text-color:   $malibu-cyan;
+$link-color:              $malibu-cyan;
+$more-link-color:         $malibu-cyan;
+$main-menu-color:         $raincloudgray;
+$signup-box-color:        $magenta;
+
+
+// functional border colors --------------
+$divider-border-color:  $lightgray;
+$main-menu-color-active:  $shalegray;
+//
+// Other
+//
+// The amount lists, blockquotes and comments are indented.
+$indent-amount: 30px;
+
+// The height of the navigation container.
+$nav-height: 3em;
+
+// Tab styling.
+$tabs-container-bg: #fff;
+$tabs-border: #bbb;
+
+
+// =============================================================================
+// Partials to be shared with all .scss files.
+// =============================================================================
+
+// Add Compass' IE and vendor prefix support variables.
+@import "compass/support";
+// Better than Drupal's clearfix.
+@import "compass/utilities/general/clearfix";
+// See http://compass-style.org/help/tutorials/spriting/
+@import "compass/utilities/sprites";
+// Use one CSS3 mixin instead of multiple vendor prefixes.
+@import "compass/css3";
+// Helps set up a vertical rhythm.
+@import "compass/typography/vertical_rhythm";
+// Add the Zen Grids responsive layout mixins.
+//@import "zen";
+// Add the susy layout mixins.
+@import "susy";
+// Add the breakpoints layout mixins.
+@import "breakpoint";
+// Now we add our custom helper mixins.
+@import "utils/mixins";

@@ -1,0 +1,483 @@
+//@import "susy";
+//@import "breakpoint";
+// required to import this here even though _init is imported before _base
+@import "compass/utilities/general/clearfix";
+
+/**
+  * THE CONTAINER MIXIN
+  **********************
+  * @include container( [<length>] );
+  *
+  *
+  * SPAN (MIXIN)
+  **************
+  * Set any element to span a portion of your layout. For a floated or 
+  * isolated layout, this will add necessary floats, widths, and margins.
+  *   width - refers to the number of columns the element going to take up
+  *   wide/wider - a optional argument lets you expand the width of the 
+  *       column to include 1 or 2 more gutters respectively
+  *   of - keyword to let Susy know that the layout is coming up
+  *   layout - context (number of columns the parent container is made up of)
+  *   last - an optional argument that tells Susy that this element is 
+  *       supposed to be the last item in the row
+  *
+  *   @include span( <width> [<wide / wider>] of <layout> [<last>] );
+  *
+  *     //This has a width of 3 columns + 1 gutter, out of 9 columns and is supposed 
+  *     //to be the last item within the context.
+  *     .some-selector {
+  *       @include span(3 wide of 9 last);
+  *     }
+  *
+  *
+  * SPAN FUNCTION
+  ***************
+  *    // This has a width of 3 columns out of 9 columns
+  *    .some-selector {
+  *      width: span(3 of 9);
+  *    }
+  *   // This has a padding of 1 column out of 9 columns 
+  *   .some-selector {
+  *     padding-left: span(1 of 9); 
+  *   }
+  *
+  *
+  * GUTTER FUNCTION
+  ******************
+  * Only takes one argument, the context (number of columns the parent 
+  * container is made up of). 
+  *
+  *   // This outputs margin that equals to 1 gutter width in a 9 column layout
+  *   .some-selector {
+  *     margin-right: gutter(9); 
+  *   }
+  *
+  * LAYOUTS
+  *********
+  * @include layout($widelayout); // sets this as the active map after it is defined  
+  * @include layout(24 1/4 fluid float after); span-grid-keywords (any order for keywords)
+  * $widelayout: layout(24 1/4 fluid float after);
+  * @include with-layout(12) { sass }  // defines a temporary column setting
+  * subcolumn - main {@include span(21); .col1, .col2, .col3 {@include span (3 of 6);}} based on 24 columns
+  *
+  */
+  
+  
+/**
+  * Here are all the global Susy settings with their default values. You can 
+  * set your own global defaults, or create individual layout maps to access 
+  * as needed. For global settings, create a $susy variable with any values 
+  * that you need.
+  * You'll want to play around with the defaults and try them out depending on 
+  * how you want to work with Susy. 
+    $susy: (
+      flow: ltr,
+      math: fluid,
+      output: float,
+      gutter-position: after,
+      container: auto,
+      container-position: center,
+      columns: 4,
+      gutters: .25,
+      column-width: false,
+      global-box-sizing: content-box,
+      last-flow: to,
+      debug: (
+        image: hide,
+        color: rgba(#66f, .25),
+        output: background,
+        toggle: top right,
+      ),
+      use-custom: (
+        background-image: true,
+        background-options: false,
+        box-sizing: true,
+        clearfix: false,
+        rem: true,
+      )
+    );
+*/
+
+// create a map - default is $susy
+$susy: (
+  // mobile container values
+  columns: 12,
+  column-width: 4em,
+  gutters: .25,
+  gutter-position: after,
+  math: fluid,
+  output: float,
+  //this will make grids show on page, must appear after global declarations
+  //debug: (image: show),
+  global-box-sizing: border-box,
+  use-custom: (rem: true
+    )
+);
+
+@include border-box-sizing;
+
+//
+// DEFAULT for smaller devices
+//
+
+#page {
+  @include container;
+  // This is the default clearfix from Compass. You can opt to use other clearfix methods
+  @include clearfix;
+  //@include show-grid();  // show the debug grid
+}
+
+#header {
+  @include clearfix;
+  
+  #logo {
+    @include span(9 first);    
+  }
+
+  #button-menu {
+    @include span(3 last);
+  }
+}
+
+.left-aside #main {
+  @include container(95%);
+}
+
+.flex-container {
+  @include container(95%);
+  .flex-left {
+    @include span(6 first);
+  }
+  .flex-right {
+    @include span(6 last);    
+  }   
+}
+
+// no-aside     
+  .no-aside #main {
+    @include container(100%);
+  }
+  
+  .homepage {
+    #members {
+      @include container(65%);
+
+    }//members
+  }
+
+
+#navigation-footer {
+  @include container(90%);
+}
+// default
+
+
+/**
+  * SMALL
+  *******
+  *
+  */
+@include breakpoint($small) {
+  .homepage {
+    #members {
+      @include container(100%);
+              
+      #member-options {
+        @include container(100%);
+        
+        #art-lovers {
+          @include span(5.5);
+        }
+        
+        #artists {
+          @include span(5.5);
+        }
+      }
+    }//members
+  }
+}//small
+
+
+
+/**
+  * MEDIUM-MIN
+  ************
+  * these changes persist to large devices
+  * increase the size of the grid
+  */
+@include breakpoint($medium-min) {
+  @include layout(24 1/4 fluid float after);
+  
+  #page {
+    @include container(24);
+  }
+  
+// NO ASIDE  
+  // no-aside - homepage
+  .homepage {
+
+    #block-views-events-featured-event {
+      @include container(100%);
+      
+      #event-block-title {
+        @include span(7 first); 
+      }
+      
+      .view-display-id-featured_event {
+        @include span(17 last);
+        
+        .mainfeaturedevent {
+          @include span(6 first);
+        }
+        
+        .views-field-field-event-image {
+          @include span(13 last);
+        }
+      }
+    } //featured event
+    
+    .view-display-id-featured_events_secondary {
+        @include container(93%);
+        
+        .view-content {
+          @include container(100%);
+          
+          .views-row {
+            @include span(5.95); 
+          }
+        }
+    } //posted events
+   
+    #colored-bar {
+      @include container(100%);
+    } //colored bars
+    
+    #members {
+      @include container(85%);
+              
+      #member-options {
+        @include container(100%);
+        
+        #art-lovers {
+          @include span(11.5);
+        }
+        
+        #artists {
+          @include span(11.5);
+        }
+      }
+    }//members  
+  
+  }//homepage
+  
+} //medium
+
+
+
+/**
+  * LARGE
+  *******
+  *
+  * these persist for all large sizes - the aside (sidebar) appears
+  * the main menu is moved to the top and the footer menu appears
+  */
+@include breakpoint($large-min) {
+  @include layout(24 1/4 fluid float after);
+  
+// HEADER
+  #header {
+    @include container(95%);
+  
+    #logo {
+      @include span(4 of 24 first);    
+    }
+
+    #main-menu {
+      @include span(20 of 24 last);    
+    }
+  }
+  
+// CONTENT
+// there are various types of content layouts - see templates.php where they
+// are set     
+
+// left-aside - standard layout - no sidebar menu    
+  .left-aside #main {
+    @include container(100%);
+    @include clearfix;
+  
+    aside {
+      @include span(7.5 first);
+
+    }
+
+    #content {
+      @include span(16.5 last);  
+    }
+  }
+
+  // flexible grid - standard layout
+  .flex-container {
+    @include container(97%);
+    .flex-left {
+      @include span(12 first);
+    }
+    .flex-right {
+      @include span(12 last);    
+    }   
+  }
+  
+
+// upcoming events
+.upcoming-events {
+  .view-events-upcoming-events {
+    @include container(100%);
+    
+    .views-row  {
+      @include span(11.9);    
+    }    
+  }
+} //upcoming events
+  
+// no-aside     
+
+  // no-aside - art-search-page
+  .art-search-page {
+    
+    .view-artist-profile-search {
+      @include container(100%);
+      
+      .view-content {
+        @include span(15 first);
+        
+        li {
+         @include span(7.5); 
+        }        
+      }
+      
+      .view-filters {
+        @include span(9 last);
+      }
+    }
+  } //art-search-page
+  
+   
+  // no-aside - artist-profile-page
+  
+    #artspan_profile_body {
+      @include container(100%);
+      
+      #artspan_profile_info_block {
+        @include span(8 first);
+      }
+      
+      #artspan_profile_image_block {
+        @include span(15 at 9 last);
+        
+        li {
+         @include span(11.90); 
+        }
+        
+      }
+    }
+ //artist-profile-page
+
+    
+  // no-aside - homepage
+  .homepage {
+
+    #members {
+      @include container(65%);
+     }//members
+     
+  } //homepage
+    
+
+
+  
+// FOOTER    
+
+  .region-social-media-footer {
+    @include container(100%);
+    
+    #block-block-12 {             // make sure you are using the right block number
+      @include span(8 of 24 first);
+    }
+    #block-instagram-block-instagram-block {
+      @include span(8 of 24);
+    }
+    #block-twitter-block-1 {
+      @include span(8 of 24 last);
+    }
+  }
+  
+  #footer-menu {
+    @include container(90%);
+    
+    #footer-logo {
+      @include span(5 of 24 first); 
+    }
+    #navigation-footer {
+      @include span(12 of 24);     
+    }
+    #badge-nav {
+      @include span(5 of 24 last);     
+    }
+  }
+  
+  #footer-bar {
+    li {
+      display: inline;
+    }
+  }
+
+} // large
+
+
+@include breakpoint($xx-large) {
+  // no-aside - art-search-page
+  .art-search-page {
+    
+    .view-artist-profile-search {
+      @include container(100%);
+      
+      .view-content {
+        @include span(16 first);
+        
+        li {
+         @include span(7.5); 
+        }        
+      }
+      
+      .view-filters {
+        @include span(8 last);
+      }
+    }
+  } //art-search-page
+ }
+ 
+ @include breakpoint($xxx-large-min) {
+  // no-aside - art-search-page
+  .art-search-page {
+    
+    .view-artist-profile-search {
+      @include container(100%);
+      
+      .view-content {
+        @include span(17 first);
+        
+        li {
+         @include span(7.5); 
+        }        
+      }
+      
+      .view-filters {
+        @include span(7 last);
+      }
+    }
+  } //art-search-page
+ }
+ 
+@include breakpoint(1600) {
+   @include layout(24 1/4 static float after);
+}
