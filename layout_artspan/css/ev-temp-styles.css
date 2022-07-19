@@ -5210,14 +5210,6 @@ body.admin-menu #admin-menu {
   display: none;
 }
 
-.view-studio-event-member-dashboard-block
-  .view-content
-  .views-field
-  table
-  td:last-child {
-  display: none;
-}
-
 .view-studio-event-member-dashboard-block .view-content .views-field {
   display: flex;
   justify-content: center;
