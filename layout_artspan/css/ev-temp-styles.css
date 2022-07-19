@@ -4516,14 +4516,14 @@ body.admin-menu #admin-menu {
                   -o-transform-origin: 50% 52%;
              transform-origin: 50% 52%;
         background: -webkit-gradient(linear, left top, right top, from(rgba(65,135,210,0.25)),to(rgba(74,200,253,0.25)));
-        background: -webkit-linear-gradient(left, rgba(65,135,210,0.25) 
+        background: -webkit-linear-gradient(left, rgba(65,135,210,0.25)
     0%,rgba(74,200,253,0.25) 100%);
-        background: -moz-linear-gradient(left, rgba(65,135,210,0.25) 
+        background: -moz-linear-gradient(left, rgba(65,135,210,0.25)
     0%,rgba(74,200,253,0.25) 100%);
-        background: -o-linear-gradient(left, rgba(65,135,210,0.25) 
+        background: -o-linear-gradient(left, rgba(65,135,210,0.25)
     0%,rgba(74,200,253,0.25) 100%);
-        background: linear-gradient(to right, rgba(65,135,210,0.25) 
-    0%,rgba(74,200,253,0.25) 100%); 
+        background: linear-gradient(to right, rgba(65,135,210,0.25)
+    0%,rgba(74,200,253,0.25) 100%);
     }
 
     #block-nice-menus-1:after {
@@ -4539,14 +4539,14 @@ body.admin-menu #admin-menu {
              transform-origin: 50% 48%;
         visibility: visible;
         background: -webkit-gradient(linear, left top, right top, from(rgba(65,135,210,0.25)),to(rgba(74,200,253,0.25)));
-        background: -webkit-linear-gradient(left, rgba(65,135,210,0.25) 
+        background: -webkit-linear-gradient(left, rgba(65,135,210,0.25)
     0%,rgba(74,200,253,0.25) 100%);
-        background: -moz-linear-gradient(left, rgba(65,135,210,0.25) 
+        background: -moz-linear-gradient(left, rgba(65,135,210,0.25)
     0%,rgba(74,200,253,0.25) 100%);
-        background: -o-linear-gradient(left, rgba(65,135,210,0.25) 
+        background: -o-linear-gradient(left, rgba(65,135,210,0.25)
     0%,rgba(74,200,253,0.25) 100%);
-        background: linear-gradient(to right, rgba(65,135,210,0.25) 
-    0%,rgba(74,200,253,0.25) 100%); 
+        background: linear-gradient(to right, rgba(65,135,210,0.25)
+    0%,rgba(74,200,253,0.25) 100%);
     }
 
     @-webkit-keyframes rotation {
@@ -5207,14 +5207,6 @@ body.admin-menu #admin-menu {
 
 .CRM_Event_Form_Registration_Register .helprow-custom_147-section.helprow-post,
 .crm-event-id-309 .event_fees-section {
-  display: none;
-}
-
-.view-studio-event-member-dashboard-block
-  .view-content
-  .views-field
-  table
-  td:last-child {
   display: none;
 }
 
@@ -6858,7 +6850,7 @@ td.multi-day .all-day-event .date-display-single {
 }
 
 .calendar-calendar .month-view .full td.multi-day .calendar.monthview .contents a {
-    white-space: 
+    white-space:
 }*/
 
 /* Color-Key */
