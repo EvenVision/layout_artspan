@@ -65,6 +65,13 @@ body {
   width: 100% !important;
 }
 
+.view-studio-event-address-view-field a:first-child {
+  display: none;
+}
+
+
+
+
 
 
 
