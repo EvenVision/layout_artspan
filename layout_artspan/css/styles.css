@@ -61,8 +61,14 @@ body {
   display: none;
 }
 
-.page-node-add .form-item.form-item-field-register-for-optional-virt-und label, .page-node-edit .form-item.form-item-field-register-for-optional-virt-und label {
+.page-node-add .form-item.form-item-field-virtual-sfos-on-boothcentr-und label, .page-node-edit .form-item-field-virtual-sfos-on-boothcentr-und label, .page-node-add .form-item.form-item-field-register-for-optional-virt-und label, .page-node-edit .form-item.form-item-field-register-for-optional-virt-und label {
+  font-weight: bold;
   width: 100% !important;
+}
+
+.page-node-add .form-item.form-item-field-virtual-sfos-on-boothcentr-und input, .page-node-edit .form-item-field-virtual-sfos-on-boothcentr-und input, .page-node-add .form-item.form-item-field-register-for-optional-virt-und input, .page-node-edit .form-item.form-item-field-register-for-optional-virt-und input {
+  position: relative;
+  top: 50px;
 }
 
 .view-studio-event-address-view-field a:first-child {

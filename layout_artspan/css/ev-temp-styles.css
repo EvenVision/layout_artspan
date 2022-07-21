@@ -81,7 +81,7 @@
   font-weight: bold;
 }
 
-.node-form .form-item.form-item-field-address-new-und-0-country {
+.node-form .form-item.form-item-field-address-new-und-0-country, #studio-event-node-form .form-item.form-item-field-studio-address-new-und-0-country {
   display:none !important;
 }
 
