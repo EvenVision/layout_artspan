@@ -67,6 +67,32 @@
  * ----------------------------------------------------------------------------
 **/
 
+
+
+
+
+
+.form-item-field-register-for-optional-virt-und input {
+  position: relative;
+  top: 50px;
+}
+
+.form-item-field-register-for-optional-virt-und label {
+  font-weight: bold;
+}
+
+.node-form .form-item.form-item-field-address-new-und-0-country {
+  display:none !important;
+}
+
+
+
+
+
+
+
+
+
 /* TEMP FIX ARTIST PROFILES LAYOUT WITH NEW SLUGS */
 .artist-profile-page #artspan_profile_image_block ul {
   display: -webkit-box;
