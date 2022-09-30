@@ -53,7 +53,7 @@ body {
 */
 /* Perm SFOS 2022 */
 
-.paypal_button_info-section {
+.paypal_button_info-section, .credit_card_info-group ._qf_Main_upload_express-section {
   display: none;
 }
 
