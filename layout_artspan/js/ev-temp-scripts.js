@@ -1,6 +1,60 @@
 (function ($, Drupal, window, document, undefined) {
   Drupal.behaviors.ev_temp_scripts = {
     attach: function (context, settings) {
+      // Hide Print Guide Image for End of Premiere Registrations Stuff (August 1, 2022)
+      if (!$('#quick_switch_links').length) {
+        var existingPrintImage = $(
+          ".page-dashboard .view-studio-event-guide-image-view-field .field-content img"
+        );
+        existingPrintImage.each(function (index) {
+          if ($(this).attr("src").includes("premier")) {
+            var table = $(this).parents("table");
+            table.find("#ev-guide-image-edit").hide();
+            var editArea = table
+              .find(".view-studio-event-address-view-field")
+              .parent();
+            editArea.find("a").each(function (index) {
+              if (
+                $(this).text().includes("edit") ||
+                $(this).text().includes("delete")
+              ) {
+                $(this).hide();
+              }
+            });
+          }
+        });
+        var opportunitiesToUploadImages = $(
+          ".page-dashboard .view-studio-event-guide-image-view-field .messages a"
+        );
+        opportunitiesToUploadImages.each(function (index) {
+          if ($(this).text().includes("Printed")) {
+            container = $(this).parent();
+            if ($(this).parent().find("a").length == 1) {
+              container.hide();
+              var table = $(this).parents("table");
+              table.find("#ev-guide-image-edit").hide();
+              var editArea = table
+                .find(".view-studio-event-address-view-field")
+                .parent();
+              editArea.find("a").each(function (index) {
+                if (
+                  $(this).text().includes("edit") ||
+                  $(this).text().includes("delete")
+                ) {
+                  $(this).hide();
+                }
+              });
+            }
+          }
+          if ($(this).text().includes("Online Guide")) {
+            container = $(this).parent();
+            container.empty();
+            container.append($(this));
+          }
+        });
+      }
+      // End Hide Print Guide Image for End of Premiere Registrations Stuff (August 1, 2022)
+
       if (
         !$(".section-please-login").hasClass("role-active-member") &&
         !$(".section-please-login").hasClass("role-anonymous-user")
@@ -757,34 +811,38 @@
           }
         });
       });
-      var blockToMove = $('#block-views-7b8768c3ccbc4a995f10aef55943d318')
-      console.log(blockToMove)
-      var elementToPlaceAfter = $('.view-event-info .views-field-field-contact-phone')
-      console.log(elementToPlaceAfter)
-      elementToPlaceAfter.after(blockToMove)
+      var blockToMove = $("#block-views-7b8768c3ccbc4a995f10aef55943d318");
+      console.log(blockToMove);
+      var elementToPlaceAfter = $(
+        ".view-event-info .views-field-field-contact-phone"
+      );
+      console.log(elementToPlaceAfter);
+      elementToPlaceAfter.after(blockToMove);
 
       // code for studio building dropdown in artist directory 2021
-      if ($('body').hasClass('section-artist-directory'))
-      {var selectBuilding = $(
-        `<select id="selectBuilding" class="form-select"> <option value="none" selected="selected">- Select a value -</option> <option>1890 Bryant Street Studios</option> <option>African American Arts & Culture Complex</option> <option>Arc Studios & Gallery</option> <option>Art Explosion - 17th Street Studios</option> <option>Art Explosion - Alabama Street Studios</option> <option>Art Explosion - Tennessee Street Studios</option> <option>Clayroom SF</option> <option>Dogpatch Collective</option> <option>Earthfire Arts Studio</option> <option>General's Residence at Fort Mason</option> <option>Hunters Point Shipyard</option> <option>Industrial Center Building</option> <option>Islais Creek Studios</option> <option>Journal Building</option> <option>Noonan Building Pier 70</option> <option>Public Glass</option> <option>Revere Avenue Studios</option> <option>Root Division</option> <option>SHARED</option> <option>San Francisco Women Artists</option> <option>Secession Art & Design</option> <option>Sonoma County Art Trails</option> <option>Studio Nocturne</option> <option>The Drawing Room</option> <option>Yosemite Place</option></select>`
-      );
-      var studioInput = $('#edit-group-affiliation-152')
-      selectBuilding.insertBefore(studioInput);
-      studioInput.hide();
-      selectBuilding.children("option").each(function () {
-        if (jQuery(this).text() == studioInput.val()) {
-          jQuery(this).attr("selected", "selected");
-        }
-      });
-      selectBuilding.change(function () {
-        if (
-          selectBuilding.children("option:selected").text() != "- Select a value -"
-        ) {
-          studioInput.val(selectBuilding.children("option:selected").text());
-        } else {
-          studioInput.val("");
-        }
-      });}
+      if ($("body").hasClass("section-artist-directory")) {
+        var selectBuilding = $(
+          `<select id="selectBuilding" class="form-select"> <option value="none" selected="selected">- Select a value -</option> <option>1890 Bryant Street Studios</option> <option>African American Arts & Culture Complex</option> <option>Arc Studios & Gallery</option> <option>Art Explosion - 17th Street Studios</option> <option>Art Explosion - Alabama Street Studios</option> <option>Art Explosion - Tennessee Street Studios</option> <option>Clayroom SF</option> <option>Dogpatch Collective</option> <option>Earthfire Arts Studio</option> <option>General's Residence at Fort Mason</option> <option>Hunters Point Shipyard</option> <option>Industrial Center Building</option> <option>Islais Creek Studios</option> <option>Journal Building</option> <option>Noonan Building Pier 70</option> <option>Public Glass</option> <option>Revere Avenue Studios</option> <option>Root Division</option> <option>SHARED</option> <option>San Francisco Women Artists</option> <option>Secession Art & Design</option> <option>Sonoma County Art Trails</option> <option>Studio Nocturne</option> <option>The Drawing Room</option> <option>Yosemite Place</option></select>`
+        );
+        var studioInput = $("#edit-group-affiliation-152");
+        selectBuilding.insertBefore(studioInput);
+        studioInput.hide();
+        selectBuilding.children("option").each(function () {
+          if (jQuery(this).text() == studioInput.val()) {
+            jQuery(this).attr("selected", "selected");
+          }
+        });
+        selectBuilding.change(function () {
+          if (
+            selectBuilding.children("option:selected").text() !=
+            "- Select a value -"
+          ) {
+            studioInput.val(selectBuilding.children("option:selected").text());
+          } else {
+            studioInput.val("");
+          }
+        });
+      }
     },
   };
 })(jQuery, Drupal, this, this.document);
@@ -800,9 +858,7 @@ function swapInputsForSelects(iteration) {
   var selectBuilding = jQuery(
     `<select id="selectBuilding" class="form-select"> <option value="none" selected="selected">- Select a value -</option> <option>1890 Bryant Street Studios</option> <option>African American Arts & Culture Complex</option> <option>Arc Studios & Gallery</option> <option>Art Explosion - 17th Street Studios</option> <option>Art Explosion - Alabama Street Studios</option> <option>Art Explosion - Tennessee Street Studios</option> <option>Clayroom SF</option> <option>Dogpatch Collective</option> <option>Earthfire Arts Studio</option> <option>General's Residence at Fort Mason</option> <option>Hunters Point Shipyard</option> <option>Industrial Center Building</option> <option>Islais Creek Studios</option> <option>Journal Building</option> <option>Noonan Building Pier 70</option> <option>Public Glass</option> <option>Revere Avenue Studios</option> <option>Root Division</option> <option>SHARED</option> <option>San Francisco Women Artists</option> <option>Secession Art & Design</option> <option>Sonoma County Art Trails</option> <option>Studio Nocturne</option> <option>The Drawing Room</option> <option>Yosemite Place</option></select>`
   );
-  var studioBuildingInput = jQuery(
-    "#edit-group-affiliation-152" + iteration
-  );
+  var studioBuildingInput = jQuery("#edit-group-affiliation-152" + iteration);
   var studioBuildingPair = [selectBuilding, studioBuildingInput];
   var selectMedium = jQuery(
     `<select class="civicrm-enabled form-select" id="mediumSelector" ><option value="none" selected="selected">- Select a value -</option><option value="painting">Painting</option><option value="photography">Photography</option><option value="wearable">Wearable Art / Jewelry</option><option value="mixed-media">Mixed Media</option><option value="sculpture">Sculpture</option><option value="ceramics">Ceramics</option><option value="drawing">Drawing</option><option value="printmaking">Printmaking</option><option value="book-arts">Book Arts</option><option value="installation">Installation</option><option value="new-media">New Media</option><option value="glass">Glass</option><option value="fiber">Fiber</option><option value="Furniture">Furniture</option></select>`
@@ -810,7 +866,10 @@ function swapInputsForSelects(iteration) {
   var mediumInput = jQuery("#edit-combine" + iteration);
   var mediumPair = [selectMedium, mediumInput];
   var fieldsToSwapArray = [stylePair, studioBuildingPair, mediumPair];
-  if (jQuery('body').hasClass('section-events-map') || jQuery('body').hasClass('section-events-list')) {
+  if (
+    jQuery("body").hasClass("section-events-map") ||
+    jQuery("body").hasClass("section-events-list")
+  ) {
     fieldsToSwapArray.forEach((element) => {
       element[0].insertBefore(element[1]);
       element[1].hide();

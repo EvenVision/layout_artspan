@@ -58,7 +58,7 @@
             <div id="site-slogan">
               <div class="title">Support Local Artists</div>
               <div class="button-wrapper"><div class="submit-button">
-                <a href="https://www.artspan.org/donate" target="_self">Donate Now</a>
+                <a href="https://www.artspan.org/civicrm/contribute/transact?reset=1&id=2" target="_self">Donate Now</a>
               </div></div><!--button-wrapper - submit-button -->
               <div class="subtitle">
                 Create. Collect. Connect.

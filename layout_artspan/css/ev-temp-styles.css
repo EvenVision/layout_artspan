@@ -8891,3 +8891,6 @@ td.multi-day .all-day-event .date-display-single {
 .view-events-list .view-filters {
   display: none !important;
 }
+.view-studio-event-member-dashboard-block .file-image img {
+  max-width: 290px;
+}
